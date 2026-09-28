@@ -20,6 +20,10 @@ __pycache__/
 *$py.class
 *.so
 
+# Static files collected
+staticfiles/
+*/staticfiles/
+
 # Django database & temp files
 *.sqlite3
 *.sqlite3-journal
