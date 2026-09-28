@@ -2,6 +2,8 @@
 # Exit on error
 set -o errexit
 
+export PYTHONUTF8=1
+
 # Install dependencies
 pip install -r requirements.txt
 

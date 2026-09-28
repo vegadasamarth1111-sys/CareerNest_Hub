@@ -176,6 +176,8 @@ STORAGES = {
     },
 }
 
+WHITENOISE_MANIFEST_STRICT = False
+
 
 # =========================
 # MEDIA FILES
