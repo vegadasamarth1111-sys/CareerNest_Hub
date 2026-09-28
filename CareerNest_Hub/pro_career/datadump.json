@@ -1,0 +1,2138 @@
+[
+{
+  "model": "auth.group",
+  "fields": {
+    "name": "Recruiter",
+    "permissions": [
+      [
+        "change_jobapplication",
+        "jobs",
+        "jobapplication"
+      ],
+      [
+        "view_jobapplication",
+        "jobs",
+        "jobapplication"
+      ]
+    ]
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$600000$gFgdhFWKfjcY59bl4aLHXr$m3su3T/leY3Rs7nE8qqm0o0JAm3KR9yx+/5GP6C2OOo=",
+    "last_login": "2026-04-24T18:31:33.064Z",
+    "is_superuser": false,
+    "username": "Raj",
+    "first_name": "",
+    "last_name": "",
+    "email": "raj99@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-02-10T10:40:36.225Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$600000$GZ673wHjhwihqLY1PrlcJ8$tGgiYoPNJYcoLK1Yzv23Yc50aaILr2zz59vtOHx9fP8=",
+    "last_login": "2026-04-25T12:50:48.953Z",
+    "is_superuser": true,
+    "username": "Sumit",
+    "first_name": "",
+    "last_name": "",
+    "email": "sumitkumar999nld@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-02-10T10:50:17.058Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$DnbyzDXJkjkG0ROhG6Zv85$7FBRoROje3e2wV8Xu4ZY1vRSI35Rk8lZZncFUPqfjS4=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "Ghanshyam",
+    "first_name": "",
+    "last_name": "",
+    "email": "ghan97@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-02-10T11:05:20.344Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$Fv86LhjGnaAWKkOC0vK8uW$EnaX0cX4rPGcedlKzLhdgVDT26M0sBoauBBd3hYm0vw=",
+    "last_login": "2026-02-16T07:04:41.886Z",
+    "is_superuser": false,
+    "username": "Harsh",
+    "first_name": "",
+    "last_name": "",
+    "email": "h@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-02-12T07:42:41.073Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$600000$HFUq1lu4VzuEs9I4PA8QOa$vs5vOmkruNtpP1h/4ZuUpC7DS0rysgaiwQBTZG7NteM=",
+    "last_login": "2026-04-24T09:09:38.872Z",
+    "is_superuser": false,
+    "username": "Vraj",
+    "first_name": "vraj",
+    "last_name": "shah",
+    "email": "vraj123@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-02-12T08:13:14Z",
+    "groups": [
+      [
+        "Recruiter"
+      ]
+    ],
+    "user_permissions": [
+      [
+        "change_job",
+        "jobs",
+        "job"
+      ],
+      [
+        "view_job",
+        "jobs",
+        "job"
+      ]
+    ]
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$2SyuxoJNi9no8eb554tfZU$iqD5JvJsterrbjSXl3jSu2meMfl6KlYa11RNjQD9+wY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "narendra",
+    "first_name": "",
+    "last_name": "",
+    "email": "narendra@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-04-08T23:52:23.974Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$600000$qAbcOGvfIUaunKcMjPJpv5$u/Au+H4xcj9n7tdO0xcL01HZNSxmJTrv+3LOP1/KjRc=",
+    "last_login": "2026-04-25T11:48:20.205Z",
+    "is_superuser": false,
+    "username": "nikhil",
+    "first_name": "",
+    "last_name": "",
+    "email": "way2nikhilrathod@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-04-09T07:34:23.847Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$lnJ0Q9hVPQlLL1u1XUcCJt$zvYqU+Bmdwea74eyXGc5zANpeev7w2nk3+rGA3QlyCk=",
+    "last_login": "2026-04-10T06:14:31.488Z",
+    "is_superuser": false,
+    "username": "SumitKumar",
+    "first_name": "",
+    "last_name": "",
+    "email": "sumitsinhaa795@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-04-10T06:02:35.595Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$ibfxOPbG6ZNiumdlQmXkMV$WDAl6imTEfEEaMqHEPoxMVxeD0TSd+sUxVQmlXx+eNo=",
+    "last_login": "2026-09-23T08:15:19.267Z",
+    "is_superuser": false,
+    "username": "samru",
+    "first_name": "",
+    "last_name": "",
+    "email": "usr@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-09-23T08:15:06.679Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "152cqcuvbfzfp11vqblzvzz6hoctrmtb",
+  "fields": {
+    "session_data": "e30:1wAOOv:qPQVtgxgbXt01L_soBOpOAJDwUAmZo8Di9mdfa3kzEc",
+    "expire_date": "2026-04-22T08:36:41.758Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "3xs6tks2ujlc50b67q4jx6nafa4x5fzy",
+  "fields": {
+    "session_data": "e30:1wAOMm:7DJGKFjToq-Wq3LbnjaEWxNetPJY6qBUM9bFw2gJY1M",
+    "expire_date": "2026-04-22T08:34:28.826Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "8jsf5e1zm5rca1dvanr10dotlulup38g",
+  "fields": {
+    "session_data": "e30:1wAONG:Tk_W6njyEpSVJZTDgXbwXGG3d1BcfrQn46LVUVrIRjM",
+    "expire_date": "2026-04-22T08:34:58.999Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "8wvmpdo3ii1v95nzs8xt125gvr6n4x85",
+  "fields": {
+    "session_data": "e30:1wAOOD:Gu_Kv-HyDD1NihmcANzcnU0LlESyrPdlfbaoZc3ZZeo",
+    "expire_date": "2026-04-22T08:35:57.231Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "b82klnv42kpquraevvj4vg2vmgyjio52",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGlnG-EtJzxmsXe8aB5AtxUmFuDtESgHtm5n3EgnWpaZ18JwmEmcRxOF3Q8gPbhugO7Rbl7m3ZZ5Qborc6ZDXTvy87O7fQYVRvzXbqJTy1gS24LBYAs8GAHU8FgvgMaIhpYuJQWdNKrqsonUMhCednXh_AO1EODM:1wF47F:G5j_pLSR7ncEcDWZ5WbOqQYfZtFAZ0lZbolxioGa3XY",
+    "expire_date": "2026-05-05T05:57:45.328Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "d5puhdf23idt5ielsp4si0sl9dt1cr48",
+  "fields": {
+    "session_data": ".eJxVjMsOgyAURP-FdUMuL8Uuu_cbyAUuxbaBRHTV9N_VxIXdTeacmS9zuC7ZrY1mN0V2Z4rdrp3H8KZygPjC8qw81LLMk-eHwk_a-FgjfR6n-3eQseV9DdpDslLEIfWEJpg9WSGlMmQN-gRAhmRIKiEADoSgRCchqF5Q1Lpjvw3iNTe2:1vv8WP:lcn40h_j0XbG7O1w8B7OeGDfcMvFl_9N7PhcQV9RsM0",
+    "expire_date": "2026-03-11T06:37:21.715Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "ftxlkgixk103ptq98bsop8edtz8f0zky",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQAP-yZ0NAgS49evcNZFkWqRqalPZk_Ltp0oNeZybzhkjbWuPWZYlThhGMhtMvTMRPabvJD2r3WfHc1mVKak_UYbu6zVle16P9G1TqFUbA4nJiy8VLKI7Rem1SElcMDU4jego2o9NndgGTiEXh4tF4nVEPF4LPFyBfOE8:1xBE9z:Dh78Zt8MPLh8ezP8Uplwsm8XxKsQyIJR0WBrwZXXcYI",
+    "expire_date": "2026-10-12T16:24:59.901Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "jqw1cg43sob18svgz7e1rxgjoa995ky2",
+  "fields": {
+    "session_data": ".eJxVjMsOgyAURP-FdUMuL8Uuu_cbyAUuxbaBRHTV9N_VxIXdTeacmS9zuC7ZrY1mN0V2Z4rdrp3H8KZygPjC8qw81LLMk-eHwk_a-FgjfR6n-3eQseV9DdpDslLEIfWEJpg9WSGlMmQN-gRAhmRIKiEADoSgRCchqF5Q1Lpjvw3iNTe2:1w5HRi:aQlg4Dbj9__icUPYJJzuDXsm_CpGF1lmtoxtaQ5fLRw",
+    "expire_date": "2026-04-08T06:10:26.856Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "k1sdnx0r796j6xxq5s2gtnto72w9sjoi",
+  "fields": {
+    "session_data": ".eJxVjMsOgyAURP-FdUMuL8Uuu_cbyAUuxbaBRHTV9N_VxIXdTeacmS9zuC7ZrY1mN0V2Z4rdrp3H8KZygPjC8qw81LLMk-eHwk_a-FgjfR6n-3eQseV9DdpDslLEIfWEJpg9WSGlMmQN-gRAhmRIKiEADoSgRCchqF5Q1Lpjvw3iNTe2:1vx1op:bhmFGF7UeViWR0FHgcgN37JMaGhTKYgw44YD5-ItKPg",
+    "expire_date": "2026-03-16T11:52:11.781Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "ohkv30083xibfiuj0brq4081af1em9ln",
+  "fields": {
+    "session_data": ".eJxVjMsOgyAURP-FdUMuL8Uuu_cbyAUuxbaBRHTV9N_VxIXdTeacmS9zuC7ZrY1mN0V2Z4rdrp3H8KZygPjC8qw81LLMk-eHwk_a-FgjfR6n-3eQseV9DdpDslLEIfWEJpg9WSGlMmQN-gRAhmRIKiEADoSgRCchqF5Q1Lpjvw3iNTe2:1w2k5Q:a75LpB0Bs-52DsruzfczY0cKgTNMbtew_ToKAr89D4A",
+    "expire_date": "2026-04-01T06:08:56.292Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "oy55s47nq7i2cyprhmok4uurfmwqo1bj",
+  "fields": {
+    "session_data": ".eJxVjMsOgyAURP-FdUMuL8Uuu_cbyAUuxbaBRHTV9N_VxIXdTeacmS9zuC7ZrY1mN0V2Z4rdrp3H8KZygPjC8qw81LLMk-eHwk_a-FgjfR6n-3eQseV9DdpDslLEIfWEJpg9WSGlMmQN-gRAhmRIKiEADoSgRCchqF5Q1Lpjvw3iNTe2:1w8ZOO:HBnsTwmIWC5JdJIs3HPP5fqs0op-oTX_D2Xh-FoK7aA",
+    "expire_date": "2026-04-17T07:56:36.437Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "qws8ugi4ul4p2p700dc25ffqo3flowxi",
+  "fields": {
+    "session_data": ".eJxVjMsOgyAURP-FdUMuL8Uuu_cbyAUuxbaBRHTV9N_VxIXdTeacmS9zuC7ZrY1mN0V2Z4rdrp3H8KZygPjC8qw81LLMk-eHwk_a-FgjfR6n-3eQseV9DdpDslLEIfWEJpg9WSGlMmQN-gRAhmRIKiEADoSgRCchqF5Q1Lpjvw3iNTe2:1w5dt2:tUpXNx8paDTsmHMf64Nx5blp6RU3pUfXcGORpSFGVdc",
+    "expire_date": "2026-04-09T06:08:08.998Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "vykabhghwgmo5jlu0vhnsq3alr4velxi",
+  "fields": {
+    "session_data": ".eJxVjMsOgyAURP-FdUMuL8Uuu_cbyAUuxbaBRHTV9N_VxIXdTeacmS9zuC7ZrY1mN0V2Z4rdrp3H8KZygPjC8qw81LLMk-eHwk_a-FgjfR6n-3eQseV9DdpDslLEIfWEJpg9WSGlMmQN-gRAhmRIKiEADoSgRCchqF5Q1Lpjvw3iNTe2:1w75Tv:tfYD6FQ337nW_74CpqEj8-IHxIxSv1TghXrkO8VjL2g",
+    "expire_date": "2026-04-13T05:48:11.154Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "xw9o6po04ipk12yznr3zipwaatrdrg8y",
+  "fields": {
+    "session_data": ".eJxVjMsOgyAURP-FdUMuL8Uuu_cbyAUuxbaBRHTV9N_VxIXdTeacmS9zuC7ZrY1mN0V2Z4rdrp3H8KZygPjC8qw81LLMk-eHwk_a-FgjfR6n-3eQseV9DdpDslLEIfWEJpg9WSGlMmQN-gRAhmRIKiEADoSgRCchqF5Q1Lpjvw3iNTe2:1w37Z6:aOmFa12SEoxaOSaFQBt4V0l9-0suCzxgB0Etcng6BhA",
+    "expire_date": "2026-04-02T07:13:08.577Z"
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "narendra"
+    ],
+    "full_name": "",
+    "email": "",
+    "role": "student",
+    "phone": "",
+    "address": "",
+    "resume": "",
+    "profile_image": "",
+    "company_name": null
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "Vraj"
+    ],
+    "full_name": "vraj shah",
+    "email": "vraj123@gmail.com",
+    "role": "recruiter",
+    "phone": "",
+    "address": "",
+    "resume": "",
+    "profile_image": "",
+    "company_name": "Infosys"
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 3,
+  "fields": {
+    "user": [
+      "nikhil"
+    ],
+    "full_name": "Nikhil_Rathod",
+    "email": "way2nikhilrathod@gmail.com",
+    "role": "student",
+    "phone": "9876543210",
+    "address": "Ashram Road, Old High court",
+    "resume": "resumes/report_python-basics_147.pdf",
+    "profile_image": "profile_images/Smiling_student_on_a_sunny_campus.png",
+    "company_name": "BrainyBeam"
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 4,
+  "fields": {
+    "user": [
+      "SumitKumar"
+    ],
+    "full_name": "",
+    "email": "sumitsinhaa795@gmail.com",
+    "role": "recruiter",
+    "phone": "",
+    "address": "",
+    "resume": "",
+    "profile_image": "",
+    "company_name": "TCS"
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 5,
+  "fields": {
+    "user": [
+      "Sumit"
+    ],
+    "full_name": "",
+    "email": "sumitkumar999nld@gmail.com",
+    "role": "admin",
+    "phone": "",
+    "address": "",
+    "resume": "",
+    "profile_image": "",
+    "company_name": null
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 6,
+  "fields": {
+    "user": [
+      "samru"
+    ],
+    "full_name": "",
+    "email": "",
+    "role": "student",
+    "phone": "",
+    "address": "",
+    "resume": "",
+    "profile_image": "",
+    "company_name": null
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": 1,
+  "fields": {
+    "title": "Data Science Engineer",
+    "company": "BrainyBeam Technologies",
+    "location": "Ahmedabad, Gujarat",
+    "salary": "₹4 L– ₹5 L",
+    "description": "BrainyBeam Technologies is looking for a Data Science Engineer with strong knowledge of Python, Machine Learning, and data analysis. Candidate should be familiar with Pandas, NumPy, Scikit-learn, and basic Deep Learning concepts. Experience with real-world datasets and model deployment is a plus.\r\n\r\nSkills Required:\r\n\r\nPython\r\n\r\nMachine Learning\r\n\r\nData Visualization\r\n\r\nSQL\r\n\r\nProblem Solving",
+    "created_at": "2026-02-11T08:00:14.225Z",
+    "posted_date": "2026-04-20T06:43:36.358Z",
+    "deadline": null
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": 2,
+  "fields": {
+    "title": "Python Developer",
+    "company": "BrainyBeam Technologies",
+    "location": "Ahmedabad, Gujarat",
+    "salary": "₹5 L – ₹6.5 L",
+    "description": "We are hiring a Python Developer with experience in Django or Flask. The candidate should be capable of building REST APIs, working with databases, and implementing authentication systems. Freshers with strong fundamentals can also apply.\r\n\r\nSkills Required:\r\n\r\nPython\r\n\r\nDjango / Flask\r\n\r\nREST API\r\n\r\nMySQL / PostgreSQL\r\n\r\nGit",
+    "created_at": "2026-02-11T08:59:58.996Z",
+    "posted_date": "2026-04-20T06:43:36.358Z",
+    "deadline": null
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": 3,
+  "fields": {
+    "title": "MERN Stack Developer",
+    "company": "Wipro",
+    "location": "Pune, Maharashtra",
+    "salary": "₹6 L– ₹8 L",
+    "description": "Wipro is seeking a MERN Stack Developer proficient in MongoDB, Express.js, React.js, and Node.js. Candidate should be able to build full-stack web applications and integrate backend APIs efficiently.\r\n\r\nSkills Required:\r\n\r\nMongoDB\r\n\r\nExpress.js\r\n\r\nReact.js\r\n\r\nNode.js\r\n\r\nJavaScript\r\n\r\nAPI Integration",
+    "created_at": "2026-02-11T09:04:04.561Z",
+    "posted_date": "2026-04-20T06:43:36.358Z",
+    "deadline": null
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": 4,
+  "fields": {
+    "title": "Frontend Developer",
+    "company": "Infosys",
+    "location": "Bangalore, Karnataka",
+    "salary": "₹4L – ₹5.5L",
+    "description": "Seeking a Frontend Developer skilled in HTML, CSS, JavaScript and React. The candidate should be able to build responsive web applications and collaborate with backend teams.",
+    "created_at": "2026-02-11T09:06:55.514Z",
+    "posted_date": "2026-04-20T06:43:36.358Z",
+    "deadline": null
+  }
+},
+{
+  "model": "jobs.jobapplication",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "Sumit"
+    ],
+    "job": 2,
+    "applied_at": "2026-02-11T10:55:32.958Z",
+    "applied_date": "2026-04-20T06:43:36.369Z",
+    "status": "Interview Scheduled",
+    "resume": "",
+    "interview_date": null,
+    "interview_time": null,
+    "interview_mode": null,
+    "meeting_link": null,
+    "interview_location": null,
+    "instructions": null
+  }
+},
+{
+  "model": "jobs.jobapplication",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "Ghanshyam"
+    ],
+    "job": 3,
+    "applied_at": "2026-02-11T11:25:50.747Z",
+    "applied_date": "2026-04-20T06:43:36.369Z",
+    "status": "Offered",
+    "resume": "",
+    "interview_date": null,
+    "interview_time": null,
+    "interview_mode": null,
+    "meeting_link": null,
+    "interview_location": null,
+    "instructions": null
+  }
+},
+{
+  "model": "jobs.jobapplication",
+  "pk": 4,
+  "fields": {
+    "user": [
+      "Vraj"
+    ],
+    "job": 3,
+    "applied_at": "2026-02-12T09:15:35.836Z",
+    "applied_date": "2026-04-20T06:43:36.369Z",
+    "status": "Applied",
+    "resume": "",
+    "interview_date": null,
+    "interview_time": null,
+    "interview_mode": null,
+    "meeting_link": null,
+    "interview_location": null,
+    "instructions": null
+  }
+},
+{
+  "model": "jobs.jobapplication",
+  "pk": 6,
+  "fields": {
+    "user": [
+      "Sumit"
+    ],
+    "job": 1,
+    "applied_at": "2026-02-13T10:29:13.787Z",
+    "applied_date": "2026-04-20T06:43:36.369Z",
+    "status": "Shortlisted",
+    "resume": "resumes/Sumit_Kumar_Resume.pdf",
+    "interview_date": null,
+    "interview_time": null,
+    "interview_mode": null,
+    "meeting_link": null,
+    "interview_location": null,
+    "instructions": null
+  }
+},
+{
+  "model": "jobs.jobapplication",
+  "pk": 7,
+  "fields": {
+    "user": [
+      "Raj"
+    ],
+    "job": 1,
+    "applied_at": "2026-02-16T10:57:30.392Z",
+    "applied_date": "2026-04-20T06:43:36.369Z",
+    "status": "Interview Scheduled",
+    "resume": "resumes/Raj_Resume.pdf",
+    "interview_date": null,
+    "interview_time": null,
+    "interview_mode": null,
+    "meeting_link": null,
+    "interview_location": null,
+    "instructions": null
+  }
+},
+{
+  "model": "jobs.jobapplication",
+  "pk": 10,
+  "fields": {
+    "user": [
+      "Raj"
+    ],
+    "job": 4,
+    "applied_at": "2026-02-19T07:13:44.618Z",
+    "applied_date": "2026-04-20T06:43:36.369Z",
+    "status": "Shortlisted",
+    "resume": "resumes/Raj_Resume_UZ7y6Po.pdf",
+    "interview_date": null,
+    "interview_time": null,
+    "interview_mode": null,
+    "meeting_link": null,
+    "interview_location": null,
+    "instructions": null
+  }
+},
+{
+  "model": "jobs.jobapplication",
+  "pk": 14,
+  "fields": {
+    "user": [
+      "nikhil"
+    ],
+    "job": 1,
+    "applied_at": "2026-04-10T08:17:52.998Z",
+    "applied_date": "2026-04-20T06:43:36.369Z",
+    "status": "Interview Scheduled",
+    "resume": "resumes/final_bhargav_Web_Dev.pdf.png",
+    "interview_date": "2026-04-28",
+    "interview_time": "10:00:00",
+    "interview_mode": "Offline",
+    "meeting_link": null,
+    "interview_location": "BrainyBeam Technologies Pvt. Ltd.\r\n3rd Floor, Shivalik Shilp II,\r\nOpp. ITC Narmada Hotel,\r\nSG Highway, Ahmedabad,\r\nGujarat – 380015",
+    "instructions": "Please arrive at least 10–15 minutes before the scheduled interview time.\r\n\r\nKindly bring:\r\n• A printed copy of your resume\r\n• A valid government ID proof\r\n\r\nReport to the reception desk and mention your name and the job role. \r\n\r\nPlease ensure formal or business casual attire."
+  }
+},
+{
+  "model": "jobs.interviewschedule",
+  "pk": 1,
+  "fields": {
+    "application": 14,
+    "candidate": [
+      "nikhil"
+    ],
+    "job": 1,
+    "interview_date": "2026-04-28",
+    "interview_time": "10:00:00",
+    "mode": "offline",
+    "location": "BrainyBeam Technologies Pvt. Ltd.\r\n3rd Floor, Shivalik Shilp II,\r\nOpp. ITC Narmada Hotel,\r\nSG Highway, Ahmedabad,\r\nGujarat – 380015",
+    "meeting_link": null,
+    "instructions": "Please arrive at least 10–15 minutes before the scheduled interview time.\r\n\r\nKindly bring:\r\n• A printed copy of your resume\r\n• A valid government ID proof\r\n\r\nReport to the reception desk and mention your name and the job role. \r\n\r\nPlease ensure formal or business casual attire.",
+    "status": "scheduled",
+    "created_at": "2026-04-24T18:25:44.128Z",
+    "updated_at": "2026-04-24T18:26:42.848Z"
+  }
+},
+{
+  "model": "internships.internship",
+  "pk": 1,
+  "fields": {
+    "title": "Frontend Developer Intern",
+    "company": "BrainyBeam Technologies",
+    "location": "Ahmedabad, Gujarat",
+    "stipend": "₹10,000/month",
+    "duration": "3 Months",
+    "description": "Work on modern web applications using HTML, CSS, Bootstrap, and JavaScript. Collaborate with backend developers to integrate APIs and improve UI/UX. Opportunity to work on live client projects.",
+    "posted_by": [
+      "Sumit"
+    ],
+    "created_at": "2026-02-25T06:55:59.954Z",
+    "posted_date": "2026-04-20T06:43:36.337Z",
+    "deadline": null
+  }
+},
+{
+  "model": "internships.internship",
+  "pk": 2,
+  "fields": {
+    "title": "Data Analyst Intern",
+    "company": "InsightEdge Analytics",
+    "location": "Ahmedabad, Gujarat",
+    "stipend": "₹9,000/month",
+    "duration": "4 Months",
+    "description": "Assist in data cleaning, visualization, and reporting using Python (Pandas, Matplotlib) and Excel. Work on real datasets and create dashboards for business insights.",
+    "posted_by": [
+      "Vraj"
+    ],
+    "created_at": "2026-02-25T06:57:51.750Z",
+    "posted_date": "2026-04-20T06:43:36.337Z",
+    "deadline": null
+  }
+},
+{
+  "model": "internships.internship",
+  "pk": 3,
+  "fields": {
+    "title": "Machine Learning Intern",
+    "company": "AI Innovators Pvt Ltd",
+    "location": "Bengaluru (Remote Option Available)",
+    "stipend": "₹12,000/month",
+    "duration": "6 Months",
+    "description": "Develop and train ML models using Python and scikit-learn. Work on real-world projects like prediction systems and recommendation engines. Exposure to deep learning basics.",
+    "posted_by": [
+      "Vraj"
+    ],
+    "created_at": "2026-02-25T06:58:54.667Z",
+    "posted_date": "2026-04-20T06:43:36.337Z",
+    "deadline": null
+  }
+},
+{
+  "model": "internships.internship",
+  "pk": 4,
+  "fields": {
+    "title": "UI/UX Design Intern",
+    "company": "CreativeHive Studio",
+    "location": "Mumbai",
+    "stipend": "₹7,000/month",
+    "duration": "3 Months",
+    "description": "Design intuitive user interfaces using Figma. Conduct user research, create wireframes, and collaborate with developers to enhance product usability.",
+    "posted_by": [
+      "Vraj"
+    ],
+    "created_at": "2026-02-25T07:00:17.664Z",
+    "posted_date": "2026-04-20T06:43:36.337Z",
+    "deadline": null
+  }
+},
+{
+  "model": "internships.internship",
+  "pk": 5,
+  "fields": {
+    "title": "Backend Developer Intern (Django)",
+    "company": "CodeSphere Solutions",
+    "location": "Ahmedabad, Gujarat",
+    "stipend": "₹11,000/month",
+    "duration": "4 Months",
+    "description": "Build REST APIs using Django and Django REST Framework. Work with databases (SQLite/PostgreSQL), authentication systems, and real deployment workflows.",
+    "posted_by": [
+      "Sumit"
+    ],
+    "created_at": "2026-02-25T07:01:24.547Z",
+    "posted_date": "2026-04-20T06:43:36.337Z",
+    "deadline": null
+  }
+},
+{
+  "model": "internships.internshipapplication",
+  "pk": 5,
+  "fields": {
+    "internship": 4,
+    "applicant": [
+      "Raj"
+    ],
+    "resume": "",
+    "status": "Pending",
+    "applied_at": "2026-03-17T17:59:16.886Z",
+    "applied_date": "2026-04-20T06:43:36.346Z",
+    "interview_date": null,
+    "interview_time": null,
+    "interview_mode": null,
+    "meeting_link": null,
+    "instructions": null
+  }
+},
+{
+  "model": "internships.internshipapplication",
+  "pk": 8,
+  "fields": {
+    "internship": 5,
+    "applicant": [
+      "Sumit"
+    ],
+    "resume": "internship_resumes/java_basics.pdf",
+    "status": "Applied",
+    "applied_at": "2026-03-20T07:11:33.939Z",
+    "applied_date": "2026-04-20T06:43:36.346Z",
+    "interview_date": null,
+    "interview_time": null,
+    "interview_mode": null,
+    "meeting_link": null,
+    "instructions": null
+  }
+},
+{
+  "model": "internships.internshipapplication",
+  "pk": 9,
+  "fields": {
+    "internship": 1,
+    "applicant": [
+      "Sumit"
+    ],
+    "resume": "internship_resumes/python_basics_F8aemEb.pdf",
+    "status": "Applied",
+    "applied_at": "2026-03-20T07:12:52.559Z",
+    "applied_date": "2026-04-20T06:43:36.346Z",
+    "interview_date": null,
+    "interview_time": null,
+    "interview_mode": null,
+    "meeting_link": null,
+    "instructions": null
+  }
+},
+{
+  "model": "internships.internshipapplication",
+  "pk": 10,
+  "fields": {
+    "internship": 3,
+    "applicant": [
+      "Sumit"
+    ],
+    "resume": "internship_resumes/python_basics_yHT2xAy.pdf",
+    "status": "Applied",
+    "applied_at": "2026-03-20T07:25:48.212Z",
+    "applied_date": "2026-04-20T06:43:36.346Z",
+    "interview_date": null,
+    "interview_time": null,
+    "interview_mode": null,
+    "meeting_link": null,
+    "instructions": null
+  }
+},
+{
+  "model": "internships.internshipapplication",
+  "pk": 12,
+  "fields": {
+    "internship": 3,
+    "applicant": [
+      "Raj"
+    ],
+    "resume": "internship_resumes/final_bhargav_Web_Dev.pdf.png",
+    "status": "Shortlisted",
+    "applied_at": "2026-04-10T07:51:01.901Z",
+    "applied_date": "2026-04-20T06:43:36.346Z",
+    "interview_date": null,
+    "interview_time": null,
+    "interview_mode": null,
+    "meeting_link": null,
+    "instructions": null
+  }
+},
+{
+  "model": "internships.internshipapplication",
+  "pk": 13,
+  "fields": {
+    "internship": 5,
+    "applicant": [
+      "nikhil"
+    ],
+    "resume": "internship_resumes/final_bhargav_Web_Dev_5jNUjNR.pdf.png",
+    "status": "Applied",
+    "applied_at": "2026-04-10T08:18:06.461Z",
+    "applied_date": "2026-04-20T06:43:36.346Z",
+    "interview_date": null,
+    "interview_time": null,
+    "interview_mode": null,
+    "meeting_link": null,
+    "instructions": null
+  }
+},
+{
+  "model": "internships.internshipapplication",
+  "pk": 14,
+  "fields": {
+    "internship": 5,
+    "applicant": [
+      "samru"
+    ],
+    "resume": "internship_resumes/Samarth_Vegada_Resume.pdf",
+    "status": "Applied",
+    "applied_at": "2026-09-23T09:38:41.281Z",
+    "applied_date": "2026-09-23T09:38:41.281Z",
+    "interview_date": null,
+    "interview_time": null,
+    "interview_mode": null,
+    "meeting_link": null,
+    "instructions": null
+  }
+},
+{
+  "model": "dashboard.contactquery",
+  "pk": 1,
+  "fields": {
+    "name": "sumit kumar",
+    "email": "sumitkumar999nld@gmail.com",
+    "subject": "Issue with Job Application Status",
+    "message": "Hello Team,\r\n\r\nI recently applied for multiple job positions through the platform. However, I am facing an issue where the application status is not updating properly even after some time.\r\n\r\nI would like to know if there is any delay in processing or if there is a technical issue from the backend.\r\n\r\nKindly look into this matter and provide an update.\r\n\r\nThank you,\r\nSumit Kumar",
+    "is_resolved": true,
+    "admin_reply": "Hello Sumit Kumar,\r\n\r\nThank you for reaching out to us.\r\n\r\nWe understand your concern regarding the delay in the update of your job application status. Our team has reviewed the issue, and it appears that there was a temporary delay in syncing application updates across the system.\r\n\r\nPlease be assured that your applications are being processed, and the status will be updated shortly. We are actively working to improve the system to avoid such delays in the future.\r\n\r\nIf the issue persists for more than 24 hours, kindly let us know, and we will investigate it further on priority.\r\n\r\nWe appreciate your patience and thank you for using CareerNest Hub.\r\n\r\nBest regards,\r\nAdmin Team\r\nCareerNest Hub",
+    "created_at": "2026-04-10T10:25:59.760Z"
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 1,
+  "fields": {
+    "title": "Python Full Stack Development",
+    "slug": "python-full-stack-development",
+    "short_description": "Learn Python, Django, HTML, CSS, JavaScript with real projects",
+    "description": "Complete full stack development course using Python and Django.\r\nIncludes frontend, backend, database and deployment.",
+    "instructor": "CodeSphere Academy",
+    "category": "Programming",
+    "level": "Beginner",
+    "language": "English",
+    "duration": "8 weeks",
+    "total_lectures": 1,
+    "price": 1999,
+    "rating": 4.5,
+    "students_enrolled": 122,
+    "certificate": true,
+    "is_paid": true,
+    "image": "course_images/python_img.png",
+    "preview_video": "https://www.youtube.com/embed/rfscVS0vtbw",
+    "created_at": "2026-03-25T04:41:00Z",
+    "updated_at": "2026-04-16T09:35:07.678Z"
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 2,
+  "fields": {
+    "title": "Data Science with Python",
+    "slug": "data-science-python",
+    "short_description": "Learn numpy, pandas, matplotlib, machine learning",
+    "description": "Learn complete data science with Python including ML and projects.",
+    "instructor": "AI Innovators",
+    "category": "Data Science",
+    "level": "Intermediate",
+    "language": "English",
+    "duration": "6 weeks",
+    "total_lectures": 35,
+    "price": 2499,
+    "rating": 4.7,
+    "students_enrolled": 91,
+    "certificate": true,
+    "is_paid": true,
+    "image": "course_images/Data_Science.jpg",
+    "preview_video": "https://www.youtube.com/embed/ua-CiDNNj30",
+    "created_at": "2026-03-25T10:37:36Z",
+    "updated_at": "2026-03-30T07:22:32.324Z"
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 3,
+  "fields": {
+    "title": "Web Development Bootcamp",
+    "slug": "web-development-bootcamp",
+    "short_description": "HTML CSS JavaScript React basic course",
+    "description": "Frontend + basic backend course for beginners.",
+    "instructor": "TechNova Institute",
+    "category": "Web",
+    "level": "Beginner",
+    "language": null,
+    "duration": "5 weeks",
+    "total_lectures": 1,
+    "price": 1499,
+    "rating": 4.5,
+    "students_enrolled": 75,
+    "certificate": true,
+    "is_paid": true,
+    "image": "course_images/webdev.webp",
+    "preview_video": "https://www.youtube.com/embed/zJSY8tbf_ys",
+    "created_at": "2026-03-25T10:43:02Z",
+    "updated_at": "2026-03-30T07:23:28.607Z"
+  }
+},
+{
+  "model": "courses.enrollment",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "Raj"
+    ],
+    "course": 1,
+    "is_paid": true,
+    "razorpay_order_id": "order_SazA8QPGjACZlJ",
+    "razorpay_payment_id": "pay_SazAbDoerWACoo",
+    "enrolled_at": "2026-04-08T11:34:25.120Z"
+  }
+},
+{
+  "model": "courses.enrollment",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "nikhil"
+    ],
+    "course": 1,
+    "is_paid": true,
+    "razorpay_order_id": "order_SbKjNkNBiRAQ9G",
+    "razorpay_payment_id": "pay_SbKk7R8bgFAGeo",
+    "enrolled_at": "2026-04-09T08:37:42.992Z"
+  }
+},
+{
+  "model": "courses.enrollment",
+  "pk": 3,
+  "fields": {
+    "user": [
+      "nikhil"
+    ],
+    "course": 2,
+    "is_paid": true,
+    "razorpay_order_id": "order_SeX5F6xbo7oIse",
+    "razorpay_payment_id": "pay_SeX5Px16z54y38",
+    "enrolled_at": "2026-04-15T10:10:55.503Z"
+  }
+},
+{
+  "model": "courses.enrollment",
+  "pk": 4,
+  "fields": {
+    "user": [
+      "nikhil"
+    ],
+    "course": 3,
+    "is_paid": false,
+    "razorpay_order_id": "order_SeX6t914CAYlZL",
+    "razorpay_payment_id": null,
+    "enrolled_at": "2026-04-16T10:08:30.941Z"
+  }
+},
+{
+  "model": "courses.enrollment",
+  "pk": 5,
+  "fields": {
+    "user": [
+      "Sumit"
+    ],
+    "course": 3,
+    "is_paid": false,
+    "razorpay_order_id": "order_Se8HqIJqZdiWEY",
+    "razorpay_payment_id": null,
+    "enrolled_at": "2026-04-16T10:33:32.130Z"
+  }
+},
+{
+  "model": "courses.lecture",
+  "pk": 1,
+  "fields": {
+    "course": 1,
+    "title": "Introduction to Programming & Python | Python Tutorial - Day #1",
+    "description": "",
+    "video": "course_videos/Introduction_to_Programming_Python_Python_Tutorial_-_Day_1_1080P.mp4",
+    "video_url": null,
+    "order": 1,
+    "created_at": "2026-03-30T11:06:31Z"
+  }
+},
+{
+  "model": "courses.lecture",
+  "pk": 2,
+  "fields": {
+    "course": 3,
+    "title": "Introduction to Python Programming",
+    "description": "In this lecture, we will learn the basics of Python programming. This includes what Python is, why it is used, and how to write your first Python program. This lecture is based on CodeWithHarry's Python tutorial.",
+    "video": "course_videos/Introduction_to_Programming_Python_Python_Tutorial_-_Day_1_1080P.mp4",
+    "video_url": null,
+    "order": 1,
+    "created_at": "2026-04-09T18:25:44.409Z"
+  }
+},
+{
+  "model": "mycourses.mycourse",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "Sumit"
+    ],
+    "course": 1,
+    "enrolled_at": "2026-03-25T11:09:36.306Z",
+    "is_paid": false,
+    "progress": 0,
+    "completed": false,
+    "certificate_issued": false
+  }
+},
+{
+  "model": "mycourses.mycourse",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "Sumit"
+    ],
+    "course": 2,
+    "enrolled_at": "2026-03-25T11:18:54.715Z",
+    "is_paid": false,
+    "progress": 100,
+    "completed": true,
+    "certificate_issued": false
+  }
+},
+{
+  "model": "mycourses.mycourse",
+  "pk": 3,
+  "fields": {
+    "user": [
+      "Raj"
+    ],
+    "course": 1,
+    "enrolled_at": "2026-04-02T06:23:40.322Z",
+    "is_paid": false,
+    "progress": 0,
+    "completed": false,
+    "certificate_issued": false
+  }
+},
+{
+  "model": "mycourses.mycourse",
+  "pk": 4,
+  "fields": {
+    "user": [
+      "nikhil"
+    ],
+    "course": 1,
+    "enrolled_at": "2026-04-09T08:47:52.955Z",
+    "is_paid": true,
+    "progress": 0,
+    "completed": false,
+    "certificate_issued": false
+  }
+},
+{
+  "model": "mycourses.mycourse",
+  "pk": 5,
+  "fields": {
+    "user": [
+      "nikhil"
+    ],
+    "course": 2,
+    "enrolled_at": "2026-04-17T10:50:14.316Z",
+    "is_paid": true,
+    "progress": 0,
+    "completed": false,
+    "certificate_issued": false
+  }
+},
+{
+  "model": "chat.chatmessage",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "nikhil"
+    ],
+    "message": "Hello",
+    "response": "Sorry, I can only help with CareerNest Hub related queries like jobs, internships, courses, or applications.",
+    "created_at": "2026-04-14T11:09:15.596Z"
+  }
+},
+{
+  "model": "chat.chatmessage",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "nikhil"
+    ],
+    "message": "How can i apply for Jobs",
+    "response": " To apply for jobs on CareerNest Hub platform, follow these steps:\n\n1. Log in to your CareerNest account.\n2. Go to the \"Jobs\" tab.\n3. Browse or search for jobs that match your preferences.\n4. Click on the job title to view the full description.\n5. If you're interested, click the \"Apply Now\" button.\n6. Follow the instructions to complete your application.\n7. Submit your application and wait for the employer's response.\n\nIf you have any issues during the application process, please contact our support team for assistance.",
+    "created_at": "2026-04-14T11:10:04.400Z"
+  }
+},
+{
+  "model": "chat.chatmessage",
+  "pk": 3,
+  "fields": {
+    "user": [
+      "nikhil"
+    ],
+    "message": "Are you married",
+    "response": "Sorry, I can only help with CareerNest Hub related queries like jobs, internships, courses, or applications.",
+    "created_at": "2026-04-14T11:11:14.601Z"
+  }
+},
+{
+  "model": "chat.chatmessage",
+  "pk": 4,
+  "fields": {
+    "user": [
+      "nikhil"
+    ],
+    "message": "What Is AI ?",
+    "response": "Sorry, I can only help with CareerNest Hub related queries like jobs, internships, courses, or applications.",
+    "created_at": "2026-04-14T11:11:33.297Z"
+  }
+},
+{
+  "model": "chat.chatmessage",
+  "pk": 5,
+  "fields": {
+    "user": [
+      "nikhil"
+    ],
+    "message": "What kind of information would you provide ?",
+    "response": "Sorry, I can only help with CareerNest Hub related queries like jobs, internships, courses, or applications.",
+    "created_at": "2026-04-14T11:12:00.966Z"
+  }
+},
+{
+  "model": "chat.chatmessage",
+  "pk": 6,
+  "fields": {
+    "user": [
+      "nikhil"
+    ],
+    "message": "what is careerNest",
+    "response": "Sorry, I can only help with CareerNest Hub related queries like jobs, internships, courses, or applications.",
+    "created_at": "2026-04-14T11:12:14.466Z"
+  }
+},
+{
+  "model": "chat.chatmessage",
+  "pk": 7,
+  "fields": {
+    "user": [
+      "nikhil"
+    ],
+    "message": "how can i apply for jobs",
+    "response": " To apply for jobs on CareerNest Hub platform, follow these steps:\n\n1. Log in to your CareerNest account.\n2. Go to the \"Jobs\" tab.\n3. Browse through the available job listings or use the search function to find jobs that match your preferences.\n4. Once you find a job you're interested in, click on the \"Apply\" button.\n5. Fill out the application form with your personal information and relevant work experience.\n6. Attach any required documents, such as a resume or cover letter.\n7. Submit your application.\n\nIf you have any questions or need assistance during the application process, please don't hesitate to contact CareerNest Support.",
+    "created_at": "2026-04-15T10:15:08.672Z"
+  }
+},
+{
+  "model": "chat.chatmessage",
+  "pk": 8,
+  "fields": {
+    "user": [
+      "nikhil"
+    ],
+    "message": "what is chatgpt",
+    "response": "Sorry, I can only help with CareerNest Hub related queries like jobs, internships, courses, or applications.",
+    "created_at": "2026-04-15T10:15:27.157Z"
+  }
+},
+{
+  "model": "chat.chatmessage",
+  "pk": 9,
+  "fields": {
+    "user": [
+      "Vraj"
+    ],
+    "message": "hello",
+    "response": "Sorry, I can only help with CareerNest Hub related queries like jobs, internships, courses, or applications.",
+    "created_at": "2026-04-16T06:05:43.020Z"
+  }
+},
+{
+  "model": "chat.chatmessage",
+  "pk": 10,
+  "fields": {
+    "user": [
+      "Vraj"
+    ],
+    "message": "how are you",
+    "response": "Sorry, I can only help with CareerNest Hub related queries like jobs, internships, courses, or applications.",
+    "created_at": "2026-04-16T06:06:42.110Z"
+  }
+},
+{
+  "model": "chat.chatmessage",
+  "pk": 11,
+  "fields": {
+    "user": [
+      "Vraj"
+    ],
+    "message": "i love you",
+    "response": "Sorry, I can only help with CareerNest Hub related queries like jobs, internships, courses, or applications.",
+    "created_at": "2026-04-16T07:05:04.231Z"
+  }
+},
+{
+  "model": "chat.chatmessage",
+  "pk": 12,
+  "fields": {
+    "user": [
+      "Vraj"
+    ],
+    "message": "hii",
+    "response": "Sorry, I can only help with CareerNest Hub related queries like jobs, internships, courses, or applications.",
+    "created_at": "2026-04-16T07:05:09.341Z"
+  }
+},
+{
+  "model": "chat.chatmessage",
+  "pk": 13,
+  "fields": {
+    "user": [
+      "Vraj"
+    ],
+    "message": "can you tell me , how to apply for jobs.",
+    "response": " Certainly! To apply for jobs on CareerNest Hub platform, follow these steps:\n\n1. Browse through available job listings and find one that matches your qualifications and interests.\n2. Click on the job title to view the full job description.\n3. Scroll down to the bottom of the page and click on the \"Apply Now\" button.\n4. You may be asked to log in or create an account if you haven't already.\n5. Complete the application form, including your personal information, education, work experience, and any other required fields.\n6. Upload your resume and cover letter, if requested.\n7. Review your application and submit it.\n\nOnce you've submitted your application, the employer will receive it and review your qualifications. If they're interested, they'll contact you for an interview. Good luck with your job search!\n\nIf you have any questions about specific jobs or the application process, feel free to ask and I'll do my best to help. However, if you have a query unrelated to CareerNest Hub, I'll kindly ask you to direct it elsewhere.",
+    "created_at": "2026-04-16T07:06:28.922Z"
+  }
+},
+{
+  "model": "chat.chatmessage",
+  "pk": 14,
+  "fields": {
+    "user": [
+      "Vraj"
+    ],
+    "message": "How can i enroll in courses",
+    "response": " To enroll in courses on CareerNest Hub platform, follow these steps:\n\n1. Log in to your CareerNest account.\n2. Navigate to the \"Courses\" tab in the main menu.\n3. Browse through the available courses or use the search function to find specific courses.\n4. Once you've found a course you're interested in, click the \"Enroll\" button.\n5. Follow the prompts to complete the enrollment process, which may include providing payment information if there is a fee for the course.\n\nIf you have any questions or need assistance during the enrollment process, please don't hesitate to ask.",
+    "created_at": "2026-04-16T07:09:33.117Z"
+  }
+},
+{
+  "model": "chat.chatmessage",
+  "pk": 15,
+  "fields": {
+    "user": [
+      "Vraj"
+    ],
+    "message": "is courses  are free",
+    "response": " I'm here to help you with any queries related to the CareerNest Hub platform, including jobs, internships, applications, and career guidance. Regarding your question about courses, I can confirm that some courses on the CareerNest Hub platform are free. If you have any specific questions about a course or the application process, please let me know. If you have a query unrelated to the CareerNest Hub platform, I'm sorry but I won't be able to assist you with that.",
+    "created_at": "2026-04-16T07:10:19.288Z"
+  }
+},
+{
+  "model": "chat.chatmessage",
+  "pk": 16,
+  "fields": {
+    "user": [
+      "Vraj"
+    ],
+    "message": "python developer any requirement ?",
+    "response": "Sorry, I can only help with CareerNest Hub related queries like jobs, internships, courses, or applications.",
+    "created_at": "2026-04-16T07:15:12.817Z"
+  }
+},
+{
+  "model": "chat.chatmessage",
+  "pk": 17,
+  "fields": {
+    "user": [
+      "Vraj"
+    ],
+    "message": "jobs provide",
+    "response": "To find jobs on CareerNest Hub, please navigate to the \"Jobs\" section. You can search for specific roles or browse available opportunities.",
+    "created_at": "2026-04-16T07:15:44.873Z"
+  }
+},
+{
+  "model": "chat.chatmessage",
+  "pk": 18,
+  "fields": {
+    "user": [
+      "nikhil"
+    ],
+    "message": "hello",
+    "response": "Sorry, I can only help with CareerNest Hub related queries like jobs, internships, courses, or applications.",
+    "created_at": "2026-04-16T07:31:49.871Z"
+  }
+},
+{
+  "model": "chat.chatmessage",
+  "pk": 19,
+  "fields": {
+    "user": [
+      "nikhil"
+    ],
+    "message": "how many jobs are available",
+    "response": " I cannot provide an exact number as it varies constantly. Please check the CareerNest Hub platform for up-to-date job listings.",
+    "created_at": "2026-04-20T06:17:14.038Z"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2026-02-10T10:57:07.671Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "1",
+    "object_repr": "sumit",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2026-02-11T08:00:14.227Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "jobs",
+      "job"
+    ],
+    "object_id": "1",
+    "object_repr": "Data Science Engineer",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2026-02-11T08:59:58.998Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "jobs",
+      "job"
+    ],
+    "object_id": "2",
+    "object_repr": "Python Developer",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2026-02-11T09:00:31.447Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "jobs",
+      "job"
+    ],
+    "object_id": "1",
+    "object_repr": "Data Science Engineer",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Salary\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2026-02-11T09:04:04.562Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "jobs",
+      "job"
+    ],
+    "object_id": "3",
+    "object_repr": "MERN Stack Developer",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2026-02-11T09:06:55.516Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "jobs",
+      "job"
+    ],
+    "object_id": "4",
+    "object_repr": "Frontend Developer",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2026-02-11T10:55:32.960Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "jobs",
+      "jobapplication"
+    ],
+    "object_id": "1",
+    "object_repr": "Ghanshyam applied for Python Developer",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2026-02-11T11:27:35.100Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "jobs",
+      "jobapplication"
+    ],
+    "object_id": "2",
+    "object_repr": "Ghanshyam applied for MERN Stack Developer",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"User\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2026-02-11T11:27:43.042Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "jobs",
+      "jobapplication"
+    ],
+    "object_id": "1",
+    "object_repr": "Sumit applied for Python Developer",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"User\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2026-02-13T07:40:07.124Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "jobs",
+      "jobapplication"
+    ],
+    "object_id": "1",
+    "object_repr": "Sumit applied for Python Developer",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2026-02-16T07:31:03.511Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "object_id": "1",
+    "object_repr": "Recruiter",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2026-02-16T07:32:41.617Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "6",
+    "object_repr": "Vraj",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2026-02-16T07:34:07.033Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "6",
+    "object_repr": "Vraj",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Superuser status\", \"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2026-02-16T07:34:20.354Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "6",
+    "object_repr": "Vraj",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Active\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2026-02-16T07:34:49.487Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "6",
+    "object_repr": "Vraj",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"User permissions\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2026-02-16T07:35:27.957Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "6",
+    "object_repr": "Vraj",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Active\", \"Staff status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2026-02-16T07:49:45.700Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "6",
+    "object_repr": "Vraj",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2026-02-16T08:58:42.460Z",
+    "user": [
+      "Vraj"
+    ],
+    "content_type": [
+      "jobs",
+      "jobapplication"
+    ],
+    "object_id": "6",
+    "object_repr": "Sumit applied for Data Science Engineer",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2026-02-16T09:16:32.547Z",
+    "user": [
+      "Vraj"
+    ],
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "object_id": "1",
+    "object_repr": "Recruiter",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 20,
+  "fields": {
+    "action_time": "2026-02-16T09:18:36.758Z",
+    "user": [
+      "Vraj"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "6",
+    "object_repr": "Vraj",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Superuser status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 21,
+  "fields": {
+    "action_time": "2026-02-16T09:45:31.380Z",
+    "user": [
+      "Vraj"
+    ],
+    "content_type": [
+      "jobs",
+      "jobapplication"
+    ],
+    "object_id": "2",
+    "object_repr": "Ghanshyam applied for MERN Stack Developer",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 22,
+  "fields": {
+    "action_time": "2026-02-16T09:58:29.522Z",
+    "user": [
+      "Vraj"
+    ],
+    "content_type": [
+      "jobs",
+      "jobapplication"
+    ],
+    "object_id": "6",
+    "object_repr": "Sumit applied for Data Science Engineer",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 23,
+  "fields": {
+    "action_time": "2026-02-16T09:59:48.772Z",
+    "user": [
+      "Vraj"
+    ],
+    "content_type": [
+      "jobs",
+      "jobapplication"
+    ],
+    "object_id": "6",
+    "object_repr": "Sumit applied for Data Science Engineer",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 24,
+  "fields": {
+    "action_time": "2026-02-16T10:23:35.392Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "jobs",
+      "jobapplication"
+    ],
+    "object_id": "6",
+    "object_repr": "Sumit applied for Data Science Engineer",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 25,
+  "fields": {
+    "action_time": "2026-02-25T06:55:59.955Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "internships",
+      "internship"
+    ],
+    "object_id": "1",
+    "object_repr": "Frontend Developer Intern",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 26,
+  "fields": {
+    "action_time": "2026-02-25T06:57:51.754Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "internships",
+      "internship"
+    ],
+    "object_id": "2",
+    "object_repr": "Data Analyst Intern",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 27,
+  "fields": {
+    "action_time": "2026-02-25T06:58:54.668Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "internships",
+      "internship"
+    ],
+    "object_id": "3",
+    "object_repr": "Machine Learning Intern",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 28,
+  "fields": {
+    "action_time": "2026-02-25T07:00:17.666Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "internships",
+      "internship"
+    ],
+    "object_id": "4",
+    "object_repr": "UI/UX Design Intern",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 29,
+  "fields": {
+    "action_time": "2026-02-25T07:01:24.548Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "internships",
+      "internship"
+    ],
+    "object_id": "5",
+    "object_repr": "Backend Developer Intern (Django)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 30,
+  "fields": {
+    "action_time": "2026-03-20T07:10:31.714Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "internships",
+      "internshipapplication"
+    ],
+    "object_id": "6",
+    "object_repr": "Sumit -> Frontend Developer Intern",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 31,
+  "fields": {
+    "action_time": "2026-03-20T07:10:31.714Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "internships",
+      "internshipapplication"
+    ],
+    "object_id": "4",
+    "object_repr": "Raj -> Backend Developer Intern (Django)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 32,
+  "fields": {
+    "action_time": "2026-03-20T07:10:31.714Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "internships",
+      "internshipapplication"
+    ],
+    "object_id": "3",
+    "object_repr": "Sumit -> Data Analyst Intern",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 33,
+  "fields": {
+    "action_time": "2026-03-20T07:10:31.714Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "internships",
+      "internshipapplication"
+    ],
+    "object_id": "2",
+    "object_repr": "Sumit -> UI/UX Design Intern",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 34,
+  "fields": {
+    "action_time": "2026-03-20T07:10:31.714Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "internships",
+      "internshipapplication"
+    ],
+    "object_id": "1",
+    "object_repr": "Sumit -> Backend Developer Intern (Django)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 35,
+  "fields": {
+    "action_time": "2026-03-25T10:28:17.067Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "courses",
+      "course"
+    ],
+    "object_id": "1",
+    "object_repr": "Python Full Stack Development",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 36,
+  "fields": {
+    "action_time": "2026-03-25T10:42:48.778Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "courses",
+      "course"
+    ],
+    "object_id": "2",
+    "object_repr": "Data Science with Python",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 37,
+  "fields": {
+    "action_time": "2026-03-25T10:45:55.162Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "courses",
+      "course"
+    ],
+    "object_id": "3",
+    "object_repr": "Web Development Bootcamp",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 38,
+  "fields": {
+    "action_time": "2026-03-30T06:24:29.529Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "courses",
+      "course"
+    ],
+    "object_id": "2",
+    "object_repr": "Data Science with Python",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Preview video\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 39,
+  "fields": {
+    "action_time": "2026-03-30T06:27:19.090Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "courses",
+      "course"
+    ],
+    "object_id": "3",
+    "object_repr": "Web Development Bootcamp",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Preview video\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 40,
+  "fields": {
+    "action_time": "2026-03-30T06:28:55.334Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "courses",
+      "course"
+    ],
+    "object_id": "1",
+    "object_repr": "Python Full Stack Development",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Preview video\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 41,
+  "fields": {
+    "action_time": "2026-03-30T07:13:17.573Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "courses",
+      "course"
+    ],
+    "object_id": "1",
+    "object_repr": "Python Full Stack Development",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Preview video\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 42,
+  "fields": {
+    "action_time": "2026-03-30T07:20:23.183Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "courses",
+      "course"
+    ],
+    "object_id": "1",
+    "object_repr": "Python Full Stack Development",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\", \"Preview video\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 43,
+  "fields": {
+    "action_time": "2026-03-30T07:22:32.329Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "courses",
+      "course"
+    ],
+    "object_id": "2",
+    "object_repr": "Data Science with Python",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\", \"Preview video\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 44,
+  "fields": {
+    "action_time": "2026-03-30T07:23:28.610Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "courses",
+      "course"
+    ],
+    "object_id": "3",
+    "object_repr": "Web Development Bootcamp",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\", \"Preview video\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 45,
+  "fields": {
+    "action_time": "2026-03-30T11:11:50.005Z",
+    "user": [
+      "Sumit"
+    ],
+    "content_type": [
+      "courses",
+      "lecture"
+    ],
+    "object_id": "1",
+    "object_repr": "Python Full Stack Development - Introduction to Programming & Python | Python Tutorial - Day #1",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+}
+]
