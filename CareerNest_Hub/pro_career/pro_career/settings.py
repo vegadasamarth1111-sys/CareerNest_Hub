@@ -26,6 +26,7 @@ if RENDER_EXTERNAL_HOSTNAME:
 
 CSRF_TRUSTED_ORIGINS = [
     'https://*.onrender.com',
+    'https://*.vercel.app',
 ]
 
 
