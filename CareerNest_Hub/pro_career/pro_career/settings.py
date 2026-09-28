@@ -117,8 +117,9 @@ if DATABASE_URL:
         import dj_database_url
         DATABASES['default'] = dj_database_url.config(
             default=DATABASE_URL,
-            conn_max_age=600,
+            conn_max_age=0 if 'pooler' in DATABASE_URL else 600,
             conn_health_checks=True,
+            ssl_require=True,
         )
     except ImportError:
         pass
