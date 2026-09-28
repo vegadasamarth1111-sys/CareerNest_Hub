@@ -1,0 +1,23 @@
+.home-hero {
+    background: linear-gradient(135deg, #0d6efd, #39a3ff);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.home-hero h1 {
+    font-weight: 700;
+}
+
+.home-shell {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.glass-card {
+    background: #f8fbff;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #dbe5f3;
+}

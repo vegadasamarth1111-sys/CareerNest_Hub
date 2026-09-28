@@ -1,0 +1,30 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+
+<h2>Applicants for {{ job.title }}</h2>
+<hr>
+
+{% for app in applications %}
+<div style="border:1px solid #ccc; padding:15px; margin:10px;">
+
+    <p><b>Candidate:</b> {{ app.user.username }}</p>
+
+    <p>
+        <b>Resume:</b>
+        {% if app.resume %}
+            <a href="{{ app.resume.url }}" target="_blank">Download Resume</a>
+        {% else %}
+            Not uploaded
+        {% endif %}
+    </p>
+
+    <p><b>Status:</b> {{ app.status }}</p>
+    <p><b>Applied on:</b> {{ app.applied_date|default:app.applied_at|date:"M d, Y h:i A" }}</p>
+
+</div>
+{% empty %}
+<p>No applications yet.</p>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}My Applications{% endblock %}
+
+{% block content %}
+<style>
+    .bg-purple {
+        background-color: #6f42c1;
+        color: #fff;
+    }
+</style>
+
+<div class="row g-4">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2 class="mb-0 fw-bold">My Applications</h2>
+        </div>
+    </div>
+
+    <div class="col-12">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-white border-0 pt-3">
+                <h5 class="mb-0 fw-semibold">Job Applications</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table align-middle mb-0">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Company</th>
+                                <th>Status</th>
+                                <th>Applied on</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for app in job_apps %}
+                            <tr>
+                                <td>{{ app.job.title }}</td>
+                                <td>{{ app.job.company }}</td>
+                                <td>
+                                    <span class="badge {% if app.status == 'Applied' %}bg-warning text-dark{% elif app.status == 'Under Review' %}bg-primary{% elif app.status == 'Shortlisted' %}bg-purple{% elif app.status == 'Interview Scheduled' %}bg-info text-dark{% elif app.status == 'Offered' %}bg-success{% elif app.status == 'Hired' %}bg-dark{% elif app.status == 'Rejected' %}bg-danger{% else %}bg-secondary{% endif %}">
+                                        {{ app.status }}
+                                    </span>
+                                </td>
+                                <td>Applied on: {{ app.applied_date|default:app.applied_at|date:"M d, Y h:i A" }}</td>
+                                <td>
+                                    {% if app.status == "Applied" %}
+                                    <a href="{% url 'revoke_application' app.id %}" class="btn btn-danger btn-sm">Revoke</a>
+                                    {% else %}
+                                    <span class="text-muted">Locked</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="5" class="text-muted">No job applications found.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-white border-0 pt-3">
+                <h5 class="mb-0 fw-semibold">Internship Applications</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table align-middle mb-0">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Company</th>
+                                <th>Status</th>
+                                <th>Applied on</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for app in internship_apps %}
+                            <tr>
+                                <td>{{ app.internship.title }}</td>
+                                <td>{{ app.internship.company }}</td>
+                                <td>
+                                    <span class="badge {% if app.status == 'Applied' %}bg-warning text-dark{% elif app.status == 'Shortlisted' %}bg-primary{% elif app.status == 'Selected' %}bg-success{% elif app.status == 'Rejected' %}bg-danger{% else %}bg-secondary{% endif %}">
+                                        {{ app.status }}
+                                    </span>
+                                </td>
+                                <td>Applied on: {{ app.applied_date|default:app.applied_at|date:"M d, Y h:i A" }}</td>
+                                <td>
+                                    {% if app.status == "Applied" %}
+                                    <a href="{% url 'internships:revoke_internship' app.id %}" class="btn btn-danger btn-sm">Revoke</a>
+                                    {% else %}
+                                    <span class="text-muted">Locked</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="5" class="text-muted">No internship applications found.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}
+Apply Internship
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="content-shell">
+
+        <h2>
+            Apply for {{ internship.title }}
+        </h2>
+
+        <hr>
+
+        <p>
+            <b>Company:</b>
+            {{ internship.company }}
+        </p>
+
+        <p>
+            <b>Location:</b>
+            {{ internship.location }}
+        </p>
+
+        <p>
+            <b>Duration:</b>
+            {{ internship.duration }}
+        </p>
+
+        <p>
+            <b>Stipend:</b>
+            {{ internship.stipend }}
+        </p>
+
+        <p>
+            <b>Posted on:</b>
+            {{ internship.posted_date|default:internship.created_at|date:"M d, Y h:i A" }}
+        </p>
+
+        <p>
+            <b>Deadline:</b>
+            {% if internship.deadline %}
+                {{ internship.deadline|date:"M d, Y" }}
+            {% else %}
+                Not specified
+            {% endif %}
+            {% if internship.is_expired %}
+                <span style="color: red; font-weight: bold; margin-left: 8px;">Expired</span>
+            {% endif %}
+        </p>
+
+        <hr>
+
+
+        {% if internship.is_expired %}
+            <p style="color: red; font-weight: bold;">This internship posting has expired. Applications are closed.</p>
+
+            <button class="btn btn-secondary" disabled>
+                Submit Application
+            </button>
+        {% else %}
+            <form
+                method="post"
+                enctype="multipart/form-data"
+            >
+
+                {% csrf_token %}
+
+
+                <label class="form-label">
+                    Upload Resume
+                </label>
+
+                <input
+                    type="file"
+                    name="resume"
+                    class="form-control"
+                    required
+                >
+
+                <br>
+
+
+                <button
+                    class="btn btn-success"
+                >
+                    Submit Application
+                </button>
+
+            </form>
+        {% endif %}
+
+
+        <br>
+
+
+        <a
+            href="{% url 'internships:internship_list' %}"
+            class="btn btn-secondary"
+        >
+            Back to Internships
+        </a>
+
+
+    </div>
+
+</div>
+
+{% endblock %}

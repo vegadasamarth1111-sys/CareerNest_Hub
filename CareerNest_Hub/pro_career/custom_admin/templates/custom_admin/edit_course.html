@@ -1,0 +1,320 @@
+{% extends "admin_panel/base.html" %}
+
+{% block title %}Edit Course{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<style>
+    .course-page-head {
+        margin-bottom: 16px;
+    }
+
+    .course-page-head h2 {
+        margin: 0;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .course-page-head p {
+        margin: 6px 0 0;
+        color: #64748b;
+    }
+
+    .premium-form-card {
+        background: #ffffff;
+        border: 1px solid #dbe5f3;
+        border-radius: 18px;
+        padding: 25px;
+        box-shadow: 0 14px 28px rgba(15, 23, 42, 0.08);
+    }
+
+    .section-title {
+        font-size: 0.98rem;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin: 0 0 14px;
+        padding-bottom: 8px;
+        border-bottom: 1px dashed #dbe5f3;
+    }
+
+    .premium-input,
+    .form-select.premium-input {
+        min-height: 44px;
+        border-radius: 12px;
+        border: 1px solid #d3dfef;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    textarea.premium-input {
+        min-height: 110px;
+    }
+
+    .premium-input:focus,
+    .form-select.premium-input:focus,
+    .form-check-input:focus {
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.2);
+    }
+
+    .field-wrap {
+        margin-bottom: 16px;
+    }
+
+    .field-wrap label {
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: #1f2937;
+    }
+
+    .section-block {
+        margin-bottom: 18px;
+        padding: 16px;
+        border: 1px solid #e4ecf8;
+        border-radius: 14px;
+        background: #fbfdff;
+    }
+
+    .check-wrap {
+        padding: 10px 12px;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        background: #fff;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .check-wrap .form-check {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .check-wrap .form-check-label {
+        font-weight: 600;
+        color: #334155;
+        margin: 0;
+    }
+
+    .media-preview {
+        margin-top: 8px;
+    }
+
+    .media-preview img {
+        max-width: 180px;
+        border-radius: 10px;
+        border: 1px solid #dbe5f3;
+    }
+
+    .actions {
+        margin-top: 10px;
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .btn-premium {
+        border-radius: 12px;
+        padding: 10px 18px;
+        font-weight: 600;
+    }
+
+    .error-text {
+        color: #dc2626;
+        font-size: 0.83rem;
+        margin-top: 5px;
+    }
+
+    @media (max-width: 768px) {
+        .premium-form-card {
+            padding: 16px;
+        }
+
+        .section-block {
+            padding: 12px;
+        }
+
+        .actions {
+            justify-content: stretch;
+        }
+
+        .actions .btn {
+            width: 100%;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="course-page-head d-flex justify-content-between align-items-start gap-3 flex-wrap">
+    <div>
+        <h2><i class="bi bi-journal-text"></i> Edit Course</h2>
+        <p>Update complete course information with all details and media.</p>
+    </div>
+
+    <a href="{% url 'custom_admin:admin_courses' %}" class="btn btn-outline-secondary btn-premium">
+        <i class="bi bi-arrow-left"></i> Back
+    </a>
+</div>
+
+<div class="premium-form-card">
+    <form method="post" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+            <div class="alert alert-danger py-2">
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+
+        <div class="section-block">
+            <h3 class="section-title">SECTION 1: Basic Info</h3>
+            <div class="row">
+                <div class="col-md-6 field-wrap">
+                    <label for="{{ form.title.id_for_label }}">{{ form.title.label }}</label>
+                    {{ form.title }}
+                    {% if form.title.errors %}<div class="error-text">{{ form.title.errors }}</div>{% endif %}
+                </div>
+                <div class="col-md-6 field-wrap">
+                    <label for="{{ form.slug.id_for_label }}">{{ form.slug.label }}</label>
+                    {{ form.slug }}
+                    {% if form.slug.errors %}<div class="error-text">{{ form.slug.errors }}</div>{% endif %}
+                </div>
+                <div class="col-md-6 field-wrap">
+                    <label for="{{ form.short_description.id_for_label }}">{{ form.short_description.label }}</label>
+                    {{ form.short_description }}
+                    {% if form.short_description.errors %}<div class="error-text">{{ form.short_description.errors }}</div>{% endif %}
+                </div>
+                <div class="col-md-6 field-wrap">
+                    <label for="{{ form.description.id_for_label }}">{{ form.description.label }}</label>
+                    {{ form.description }}
+                    {% if form.description.errors %}<div class="error-text">{{ form.description.errors }}</div>{% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="section-block">
+            <h3 class="section-title">SECTION 2: Course Details</h3>
+            <div class="row">
+                <div class="col-md-6 field-wrap">
+                    <label for="{{ form.instructor.id_for_label }}">{{ form.instructor.label }}</label>
+                    {{ form.instructor }}
+                    {% if form.instructor.errors %}<div class="error-text">{{ form.instructor.errors }}</div>{% endif %}
+                </div>
+                <div class="col-md-6 field-wrap">
+                    <label for="{{ form.category.id_for_label }}">{{ form.category.label }}</label>
+                    {{ form.category }}
+                    {% if form.category.errors %}<div class="error-text">{{ form.category.errors }}</div>{% endif %}
+                </div>
+                <div class="col-md-6 field-wrap">
+                    <label for="{{ form.level.id_for_label }}">{{ form.level.label }}</label>
+                    {{ form.level }}
+                    {% if form.level.errors %}<div class="error-text">{{ form.level.errors }}</div>{% endif %}
+                </div>
+                <div class="col-md-6 field-wrap">
+                    <label for="{{ form.language.id_for_label }}">{{ form.language.label }}</label>
+                    {{ form.language }}
+                    {% if form.language.errors %}<div class="error-text">{{ form.language.errors }}</div>{% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="section-block">
+            <h3 class="section-title">SECTION 3: Course Stats</h3>
+            <div class="row">
+                <div class="col-md-4 field-wrap">
+                    <label for="{{ form.duration.id_for_label }}">{{ form.duration.label }}</label>
+                    {{ form.duration }}
+                    {% if form.duration.errors %}<div class="error-text">{{ form.duration.errors }}</div>{% endif %}
+                </div>
+                <div class="col-md-4 field-wrap">
+                    <label for="{{ form.total_lectures.id_for_label }}">{{ form.total_lectures.label }}</label>
+                    {{ form.total_lectures }}
+                    {% if form.total_lectures.errors %}<div class="error-text">{{ form.total_lectures.errors }}</div>{% endif %}
+                </div>
+                <div class="col-md-4 field-wrap">
+                    <label for="{{ form.price.id_for_label }}">{{ form.price.label }}</label>
+                    {{ form.price }}
+                    {% if form.price.errors %}<div class="error-text">{{ form.price.errors }}</div>{% endif %}
+                </div>
+                <div class="col-md-4 field-wrap">
+                    <label for="{{ form.rating.id_for_label }}">{{ form.rating.label }}</label>
+                    {{ form.rating }}
+                    {% if form.rating.errors %}<div class="error-text">{{ form.rating.errors }}</div>{% endif %}
+                </div>
+                <div class="col-md-4 field-wrap">
+                    <label for="{{ form.students_enrolled.id_for_label }}">{{ form.students_enrolled.label }}</label>
+                    {{ form.students_enrolled }}
+                    {% if form.students_enrolled.errors %}<div class="error-text">{{ form.students_enrolled.errors }}</div>{% endif %}
+                </div>
+                <div class="col-md-4 field-wrap">
+                    <label for="{{ form.created_at.id_for_label }}">{{ form.created_at.label }}</label>
+                    {{ form.created_at }}
+                    {% if form.created_at.errors %}<div class="error-text">{{ form.created_at.errors }}</div>{% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="section-block">
+            <h3 class="section-title">SECTION 4: Media</h3>
+            <div class="row">
+                <div class="col-md-6 field-wrap">
+                    <label for="{{ form.image.id_for_label }}">{{ form.image.label }}</label>
+                    {{ form.image }}
+                    {% if course.image %}
+                        <div class="media-preview">
+                            <img src="{{ course.image.url }}" alt="Current course image">
+                        </div>
+                    {% endif %}
+                    {% if form.image.errors %}<div class="error-text">{{ form.image.errors }}</div>{% endif %}
+                </div>
+                <div class="col-md-6 field-wrap">
+                    <label for="{{ form.preview_video.id_for_label }}">{{ form.preview_video.label }}</label>
+                    {{ form.preview_video }}
+                    {% if form.preview_video.errors %}<div class="error-text">{{ form.preview_video.errors }}</div>{% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="section-block mb-0">
+            <h3 class="section-title">SECTION 5: Options</h3>
+            <div class="row">
+                <div class="col-md-6 field-wrap mb-0">
+                    <div class="check-wrap">
+                        <div class="form-check">
+                            {{ form.certificate }}
+                            <label class="form-check-label" for="{{ form.certificate.id_for_label }}">
+                                {{ form.certificate.label }}
+                            </label>
+                        </div>
+                    </div>
+                    {% if form.certificate.errors %}<div class="error-text">{{ form.certificate.errors }}</div>{% endif %}
+                </div>
+                <div class="col-md-6 field-wrap mb-0">
+                    <div class="check-wrap">
+                        <div class="form-check">
+                            {{ form.is_paid }}
+                            <label class="form-check-label" for="{{ form.is_paid.id_for_label }}">
+                                {{ form.is_paid.label }}
+                            </label>
+                        </div>
+                    </div>
+                    {% if form.is_paid.errors %}<div class="error-text">{{ form.is_paid.errors }}</div>{% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <a href="{% url 'custom_admin:admin_courses' %}" class="btn btn-outline-secondary btn-premium">Back</a>
+            <button type="submit" class="btn btn-warning btn-premium">
+                <i class="bi bi-pencil-square"></i> Update Course
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}

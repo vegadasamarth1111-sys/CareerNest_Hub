@@ -1,0 +1,172 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block title %}{{ job.title }}{% endblock %}
+
+{% block content %}
+<style>
+    .detail-shell {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .detail-card {
+        border: 1px solid #dbe5f3;
+        border-radius: 16px;
+        background: #fff;
+        box-shadow: 0 14px 34px rgba(12, 42, 87, 0.1);
+        overflow: hidden;
+    }
+
+    .detail-header {
+        background: linear-gradient(135deg, #eaf2ff, #f8fbff);
+        border-bottom: 1px solid #dbeafe;
+        padding: 22px;
+    }
+
+    .detail-title {
+        margin: 0 0 4px;
+        font-size: 30px;
+        color: #0f172a;
+        font-weight: 700;
+    }
+
+    .detail-company {
+        margin: 0;
+        font-size: 18px;
+        color: #1e3a8a;
+        font-weight: 600;
+    }
+
+    .detail-content {
+        padding: 22px;
+    }
+
+    .detail-meta-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 12px;
+        margin-bottom: 18px;
+    }
+
+    .detail-meta-item {
+        border: 1px solid #e2e8f0;
+        border-radius: 10px;
+        padding: 10px 12px;
+        background: #f8fbff;
+    }
+
+    .detail-meta-label {
+        display: block;
+        font-size: 12px;
+        color: #64748b;
+        margin-bottom: 3px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+    }
+
+    .detail-meta-value {
+        color: #0f172a;
+        font-weight: 600;
+    }
+
+    .detail-section-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 8px;
+    }
+
+    .detail-text {
+        margin: 0;
+        color: #334155;
+        line-height: 1.65;
+        white-space: pre-wrap;
+    }
+
+    .detail-actions {
+        margin-top: 22px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+</style>
+
+<div class="detail-shell py-2">
+    <article class="detail-card">
+        <header class="detail-header">
+            <h1 class="detail-title">{{ job.title }}</h1>
+            <p class="detail-company">{{ job.company }}</p>
+        </header>
+
+        <div class="detail-content">
+            <div class="detail-meta-grid">
+                <div class="detail-meta-item">
+                    <span class="detail-meta-label">Location</span>
+                    <span class="detail-meta-value">{{ job.location }}</span>
+                </div>
+                <div class="detail-meta-item">
+                    <span class="detail-meta-label">Salary</span>
+                    <span class="detail-meta-value">
+                        {% if job.salary %}
+                            INR {{ job.salary }}
+                        {% else %}
+                            Not specified
+                        {% endif %}
+                    </span>
+                </div>
+                <div class="detail-meta-item">
+                    <span class="detail-meta-label">Posted Date</span>
+                    <span class="detail-meta-value">{{ job.posted_date|default:job.created_at|date:"M d, Y h:i A" }}</span>
+                </div>
+                <div class="detail-meta-item">
+                    <span class="detail-meta-label">Deadline</span>
+                    <span class="detail-meta-value">
+                        {% if job.deadline %}
+                            {{ job.deadline|date:"M d, Y" }}
+                        {% else %}
+                            Not specified
+                        {% endif %}
+                        {% if job.is_expired %}
+                            <span class="text-danger fw-bold ms-1">(Expired)</span>
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+
+            <section class="mb-4">
+                <h2 class="detail-section-title">Job Description</h2>
+                <p class="detail-text">{{ job.description|default:"No description provided yet." }}</p>
+            </section>
+
+            <section>
+                <h2 class="detail-section-title">Skills Required</h2>
+                <p class="detail-text">
+                    {% if job.skills_required %}
+                        {{ job.skills_required }}
+                    {% else %}
+                        Not specified
+                    {% endif %}
+                </p>
+            </section>
+
+            <div class="detail-actions">
+                <a href="{% url 'jobs_list' %}" class="btn btn-outline-primary">Back to Jobs</a>
+
+                {% if user.is_authenticated %}
+                    {% if already_applied %}
+                        <a href="{% url 'my_applications' %}" class="btn btn-success">View My Applications</a>
+                    {% elif job.is_expired %}
+                        <button class="btn btn-secondary" type="button" disabled>Application Closed</button>
+                    {% else %}
+                        <a href="{% url 'apply_job' job.id %}" class="btn btn-primary">Apply Now</a>
+                    {% endif %}
+                {% else %}
+                    <a href="{% url 'login' %}" class="btn btn-primary">Login to Apply</a>
+                {% endif %}
+            </div>
+        </div>
+    </article>
+</div>
+
+{% endblock %}

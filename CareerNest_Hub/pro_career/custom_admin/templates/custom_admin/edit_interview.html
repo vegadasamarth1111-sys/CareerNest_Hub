@@ -1,0 +1,103 @@
+{% extends "admin_panel/base.html" %}
+
+{% block title %}Edit Interview{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="fw-bold mb-0">Edit Interview</h2>
+    <a href="{% url 'custom_admin:admin_interviews' %}" class="btn btn-outline-secondary">Back</a>
+</div>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags|default:'info' }} py-2">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
+<div class="card shadow-sm border-0">
+    <div class="card-body">
+        <form method="POST" class="row g-3">
+            {% csrf_token %}
+
+            <div class="col-md-6">
+                <label for="date" class="form-label">Interview Date</label>
+                <input type="date" id="date" name="date" class="form-control" required
+                       value="{{ interview.interview_date|date:'Y-m-d' }}">
+            </div>
+
+            <div class="col-md-6">
+                <label for="time" class="form-label">Interview Time</label>
+                <input type="time" id="time" name="time" class="form-control" required
+                       value="{{ interview.interview_time|time:'H:i' }}">
+            </div>
+
+            <div class="col-md-6">
+                <label for="mode" class="form-label">Mode</label>
+                <select id="mode" name="mode" class="form-select" required>
+                    <option value="online" {% if interview.mode == "online" %}selected{% endif %}>Online</option>
+                    <option value="offline" {% if interview.mode == "offline" %}selected{% endif %}>Offline</option>
+                </select>
+            </div>
+
+            <div class="col-md-6">
+                <label for="status" class="form-label">Status</label>
+                <select id="status" name="status" class="form-select">
+                    <option value="scheduled" {% if interview.status == "scheduled" %}selected{% endif %}>Scheduled</option>
+                    <option value="cancelled" {% if interview.status == "cancelled" %}selected{% endif %}>Cancelled</option>
+                    <option value="completed" {% if interview.status == "completed" %}selected{% endif %}>Completed</option>
+                </select>
+            </div>
+
+            <div class="col-md-6" id="meetingLinkGroup">
+                <label for="meeting_link" class="form-label">Meeting Link</label>
+                <input type="url" id="meeting_link" name="meeting_link" class="form-control"
+                       value="{{ interview.meeting_link|default:'' }}" placeholder="https://meet.google.com/...">
+            </div>
+
+            <div class="col-md-6" id="locationGroup">
+                <label for="location" class="form-label">Location</label>
+                <textarea id="location" name="location" class="form-control" rows="2"
+                          placeholder="Office address / venue details">{{ interview.location|default:'' }}</textarea>
+            </div>
+
+            <div class="col-12">
+                <label for="instructions" class="form-label">Instructions</label>
+                <textarea id="instructions" name="instructions" class="form-control" rows="4"
+                          placeholder="Any special instructions...">{{ interview.instructions|default:'' }}</textarea>
+            </div>
+
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Update Interview</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    (function () {
+        var modeEl = document.getElementById("mode");
+        var meetingLinkGroup = document.getElementById("meetingLinkGroup");
+        var locationGroup = document.getElementById("locationGroup");
+        var meetingLink = document.getElementById("meeting_link");
+        var location = document.getElementById("location");
+
+        function toggleFields() {
+            var mode = (modeEl.value || "").toLowerCase();
+            if (mode === "online") {
+                meetingLinkGroup.classList.remove("d-none");
+                locationGroup.classList.add("d-none");
+                meetingLink.required = true;
+                location.required = false;
+            } else {
+                meetingLinkGroup.classList.add("d-none");
+                locationGroup.classList.remove("d-none");
+                meetingLink.required = false;
+                location.required = true;
+            }
+        }
+
+        modeEl.addEventListener("change", toggleFields);
+        toggleFields();
+    })();
+</script>
+{% endblock %}

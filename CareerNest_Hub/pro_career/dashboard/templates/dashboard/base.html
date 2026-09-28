@@ -1,0 +1,686 @@
+﻿{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CareerNest Hub</title>
+
+    <!-- ✅ Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- ✅ Your CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=dashboard-gap-fix-5">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            padding-top: 70px;
+            background-color: #f8fafc;
+        }
+
+        .cn-profile-menu {
+            position: relative;
+        }
+
+        .cn-profile-trigger {
+            border: none;
+            background: transparent;
+            padding: 0;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .cn-profile-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            box-shadow: 0 10px 18px rgba(37, 99, 235, 0.28);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .cn-profile-trigger:hover .cn-profile-avatar {
+            transform: translateY(-1px);
+            box-shadow: 0 12px 22px rgba(37, 99, 235, 0.35);
+        }
+
+        .cn-profile-dropdown {
+            position: absolute;
+            right: 0;
+            top: calc(100% + 10px);
+            width: 250px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 18px 35px rgba(15, 23, 42, 0.18);
+            border: 1px solid #e2e8f0;
+            padding: 12px;
+            opacity: 0;
+            transform: translateY(8px);
+            pointer-events: none;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            z-index: 1050;
+        }
+
+        .cn-profile-dropdown.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .cn-profile-name {
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 4px;
+            line-height: 1.2;
+        }
+
+        .cn-profile-email,
+        .cn-profile-role {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 3px;
+            line-height: 1.2;
+        }
+
+        .cn-profile-divider {
+            margin: 10px 0;
+            border: 0;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .cn-profile-link {
+            display: block;
+            text-decoration: none;
+            color: #0f172a;
+            font-weight: 500;
+            padding: 8px 10px;
+            border-radius: 8px;
+            transition: background-color 0.2s ease;
+        }
+
+        .cn-profile-link:hover {
+            background: #f8fafc;
+            color: #0f172a;
+        }
+
+        .cn-profile-link.cn-logout-link {
+            color: #dc2626;
+        }
+
+        .cn-welcome-text {
+            color: #fff;
+            font-weight: 500;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary px-4 fixed-top">
+    <a class="navbar-brand fw-bold cnh-brand-link" href="{% if user.is_authenticated %}{% url 'dashboard_home' %}{% else %}{% url 'home' %}{% endif %}">
+        <img src="{% static 'img/careernest-logo.svg' %}" alt="CareerNest Logo" class="cnh-navbar-logo">
+        <span class="cnh-brand-text">CareerNest Hub</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+        <!-- LEFT MENU -->
+        <ul class="navbar-nav me-auto">
+
+            {% if user.is_authenticated %}
+
+                <!-- ================= ADMIN ================= -->
+                {% if user.is_superuser %}
+
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold text-warning"
+                           href="{% url 'custom_admin:admin_dashboard' %}">
+                            Admin Dashboard
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/jobs/">Jobs</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/internships/">Internships</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/courses/">Courses</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/mycourses/">My Courses</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{% url 'custom_admin:manage_courses' %}">
+                            Manage Courses
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'recruiter_applications' %}?status=Interview%20Scheduled">
+                            Interview Scheduling
+                        </a>
+                    </li>
+
+                <!-- ================= RECRUITER ================= -->
+                {% elif user.profile.role|default:'' == 'recruiter' %}
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard/">
+                            Dashboard
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/jobs/recruiter/applications/">
+                            Job Applications
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/internships/recruiter/applications/">
+                            Internship Applications
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'recruiter_applications' %}?status=Interview%20Scheduled">
+                            Interview Scheduling
+                        </a>
+                    </li>
+
+                <!-- ================= STUDENT ================= -->
+                {% else %}
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard/">Dashboard</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/jobs/">Jobs</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/internships/">Internships</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/courses/">Courses</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/mycourses/">My Courses</a>
+                    </li>
+
+                    {% if user.is_authenticated and user.profile.role|default:'student' == 'student' %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'my_applications' %}">My Applications</a>
+                        </li>
+                    {% endif %}
+
+                {% endif %}
+
+            {% endif %}
+
+        </ul>
+
+        <!-- RIGHT SIDE -->
+        <ul class="navbar-nav align-items-center">
+
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <span class="cn-welcome-text">Welcome, {{ user.username }}</span>
+                </li>
+                <li class="nav-item">
+                    <div class="cn-profile-menu">
+                        <button class="cn-profile-trigger ms-2" type="button"
+                                onclick="toggleDropdown(event)"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                                aria-label="Open profile menu">
+                            <div class="cn-profile-avatar">
+                                {{ request.user.username|first|upper }}
+                            </div>
+                        </button>
+
+                        <div id="profileDropdown" class="cn-profile-dropdown">
+                            <p class="cn-profile-name">{{ request.user.username }}</p>
+                            <p class="cn-profile-email">{{ request.user.email|default:"No email added" }}</p>
+                            <p class="cn-profile-role">
+                                {% if user.is_superuser %}
+                                    Admin
+                                {% elif user.profile.role|default:'' == 'recruiter' %}
+                                    Recruiter
+                                {% else %}
+                                    Student
+                                {% endif %}
+                            </p>
+                            <hr class="cn-profile-divider">
+                            <a href="{% url 'profile' %}" class="cn-profile-link">My Profile</a>
+                            <a href="{% url 'logout' %}" class="cn-profile-link cn-logout-link">Logout</a>
+                        </div>
+                    </div>
+                </li>
+
+            {% else %}
+                <li class="nav-item">
+                    <a href="{% url 'login' %}" class="btn btn-light btn-sm me-2">Login</a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{% url 'register' %}" class="btn btn-warning btn-sm">Register</a>
+                </li>
+            {% endif %}
+
+        </ul>
+
+    </div>
+</nav>
+
+<!-- ================= CONTENT ================= -->
+<div class="container mt-4">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<!-- ================= FOOTER ================= -->
+{% include "partials/footer.html" %}
+
+<!-- ✅ Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function toggleDropdown(event) {
+        event.stopPropagation();
+        var dropdown = document.getElementById("profileDropdown");
+        if (!dropdown) return;
+        dropdown.classList.toggle("show");
+    }
+
+    document.addEventListener("click", function (event) {
+        var menu = document.querySelector(".cn-profile-menu");
+        var dropdown = document.getElementById("profileDropdown");
+        if (!menu || !dropdown) return;
+        if (!menu.contains(event.target)) {
+            dropdown.classList.remove("show");
+        }
+    });
+</script>
+
+<style>
+    :root {
+        --cnh-blue-primary: #2563EB;
+        --cnh-blue-dark: #1E40AF;
+        --cnh-blue-accent: #3B82F6;
+        --cnh-blue-light: #EFF6FF;
+        --cnh-bot-bg: #E0ECFF;
+        --cnh-text-dark: #1E293B;
+    }
+
+    #cnh-ai-toggle {
+        position: fixed;
+        right: 22px;
+        bottom: 22px;
+        width: 60px;
+        height: 60px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 0;
+        border-radius: 50%;
+        padding: 0;
+        background: linear-gradient(135deg, var(--cnh-blue-primary), var(--cnh-blue-dark));
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        transition: transform 0.24s ease, box-shadow 0.24s ease, background 0.24s ease;
+        touch-action: manipulation;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        z-index: 9999;
+    }
+
+    #cnh-ai-toggle .cnh-ai-toggle-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    #cnh-ai-toggle svg {
+        width: 26px;
+        height: 26px;
+        fill: #fff;
+        display: block;
+    }
+
+    .cnh-ai-tooltip {
+        position: absolute;
+        right: 72px;
+        top: 50%;
+        transform: translateY(-50%) translateX(6px);
+        background: #1E293B;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1;
+        padding: 7px 10px;
+        border-radius: 8px;
+        white-space: nowrap;
+        pointer-events: none;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
+        box-shadow: 0 8px 18px rgba(15, 23, 42, 0.28);
+    }
+
+    #cnh-ai-toggle:hover .cnh-ai-tooltip,
+    #cnh-ai-toggle:focus-visible .cnh-ai-tooltip,
+    #cnh-ai-toggle.cnh-tooltip-visible .cnh-ai-tooltip {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(-50%) translateX(0);
+        transition-delay: 0s;
+    }
+
+    #cnh-ai-toggle:hover {
+        background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+        transform: scale(1.05);
+        box-shadow: 0 12px 26px rgba(30, 64, 175, 0.35);
+    }
+
+    #cnh-ai-toggle:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.35), 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    #cnh-ai-popup {
+        position: fixed;
+        right: 22px;
+        bottom: 95px;
+        width: min(360px, calc(100vw - 24px));
+        height: min(520px, 72vh);
+        background: #ffffff;
+        border-radius: 18px;
+        box-shadow: 0 20px 45px rgba(15, 23, 42, 0.30);
+        flex-direction: column;
+        display: flex;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(18px) scale(0.98);
+        transition: opacity 0.26s ease, transform 0.26s ease, visibility 0s linear 0.26s;
+        z-index: 9999;
+    }
+
+    #cnh-ai-popup.cnh-open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0) scale(1);
+        transition-delay: 0s;
+    }
+
+    #cnh-ai-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 14px;
+        color: #fff;
+        font-weight: 700;
+        background: linear-gradient(135deg, var(--cnh-blue-primary), var(--cnh-blue-dark));
+    }
+
+    #cnh-ai-close {
+        background: transparent;
+        border: 0;
+        color: #fff;
+        font-size: 20px;
+        line-height: 1;
+        cursor: pointer;
+        padding: 0 4px;
+    }
+
+    #cnh-ai-messages {
+        flex: 1;
+        overflow-y: auto;
+        padding: 12px;
+        background: var(--cnh-blue-light);
+        font-size: 14px;
+    }
+
+    .cnh-ai-msg {
+        margin-bottom: 10px;
+        max-width: 88%;
+        padding: 10px 12px;
+        border-radius: 12px;
+        overflow-wrap: anywhere;
+        white-space: pre-wrap;
+    }
+
+    .cnh-ai-msg.user {
+        margin-left: auto;
+        background: var(--cnh-blue-primary);
+        color: #fff;
+    }
+
+    .cnh-ai-msg.bot {
+        margin-right: auto;
+        background: var(--cnh-bot-bg);
+        color: var(--cnh-text-dark);
+    }
+
+    #cnh-ai-input-row {
+        display: flex;
+        gap: 8px;
+        padding: 10px;
+        border-top: 1px solid #bfdbfe;
+        background: #fff;
+    }
+
+    #cnh-ai-input {
+        flex: 1;
+        border: 1px solid var(--cnh-blue-accent);
+        border-radius: 10px;
+        padding: 9px 10px;
+        outline: none;
+        font-size: 14px;
+        color: var(--cnh-text-dark);
+        transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    #cnh-ai-input:focus {
+        border-color: var(--cnh-blue-accent);
+        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+    }
+
+    #cnh-ai-send {
+        border: 0;
+        border-radius: 20px;
+        padding: 9px 12px;
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+        background: var(--cnh-blue-primary);
+        transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    #cnh-ai-send:hover {
+        background: var(--cnh-blue-dark);
+        transform: translateY(-1px);
+    }
+
+    #cnh-ai-send:disabled {
+        opacity: 0.75;
+        cursor: not-allowed;
+        transform: none;
+    }
+
+    @media (max-width: 576px) {
+        #cnh-ai-toggle {
+            right: 14px;
+            bottom: 14px;
+            width: 58px;
+            height: 58px;
+        }
+
+        #cnh-ai-popup {
+            right: 12px;
+            left: 12px;
+            width: auto;
+            bottom: 72px;
+            height: min(520px, 70vh);
+        }
+    }
+
+</style>
+
+<button id="cnh-ai-toggle" type="button" aria-label="Open CareerNest Assistant" aria-expanded="false">
+    <span class="cnh-ai-toggle-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+            <path d="M12 3C6.477 3 2 7.03 2 12c0 2.197.88 4.208 2.344 5.76V22l4.53-2.483A11.29 11.29 0 0 0 12 20c5.523 0 10-4.03 10-9s-4.477-8-10-8Zm-4 9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm4 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm4 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"></path>
+        </svg>
+    </span>
+    <span class="cnh-ai-tooltip" role="tooltip">Help</span>
+</button>
+
+<div id="cnh-ai-popup" aria-live="polite" aria-label="CareerNest Assistant">
+    <div id="cnh-ai-header">
+        <span>CareerNest Assistant</span>
+        <button id="cnh-ai-close" type="button" aria-label="Close chat">&times;</button>
+    </div>
+
+    <div id="cnh-ai-messages"></div>
+
+    <div id="cnh-ai-input-row">
+        <input id="cnh-ai-input" type="text" placeholder="Ask about jobs, internships, courses...">
+        <button id="cnh-ai-send" type="button">Send</button>
+    </div>
+</div>
+
+<div id="cnh-ai-csrf-holder" style="display:none;">{% csrf_token %}</div>
+
+<script>
+    (function () {
+        var toggleBtn = document.getElementById("cnh-ai-toggle");
+        var popup = document.getElementById("cnh-ai-popup");
+        var closeBtn = document.getElementById("cnh-ai-close");
+        var input = document.getElementById("cnh-ai-input");
+        var sendBtn = document.getElementById("cnh-ai-send");
+        var messages = document.getElementById("cnh-ai-messages");
+        var tooltipTimer;
+
+        function getCsrfToken() {
+            var name = "csrftoken=";
+            var decodedCookie = decodeURIComponent(document.cookie || "");
+            var parts = decodedCookie.split(";");
+
+            for (var i = 0; i < parts.length; i++) {
+                var c = parts[i].trim();
+                if (c.indexOf(name) === 0) {
+                    return c.substring(name.length);
+                }
+            }
+
+            var hiddenToken = document.querySelector("#cnh-ai-csrf-holder input[name='csrfmiddlewaretoken']");
+            return hiddenToken ? hiddenToken.value : "";
+        }
+
+        function addMessage(text, who) {
+            var bubble = document.createElement("div");
+            bubble.className = "cnh-ai-msg " + (who === "user" ? "user" : "bot");
+            bubble.textContent = text;
+
+            messages.appendChild(bubble);
+            messages.scrollTo({ top: messages.scrollHeight, behavior: "smooth" });
+        }
+
+        function sendMessage() {
+            var text = input.value.trim();
+            if (!text) return;
+
+            addMessage(text, "user");
+            input.value = "";
+            sendBtn.disabled = true;
+
+            var body = new URLSearchParams({ message: text }).toString();
+
+            fetch("/chat/api/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "X-CSRFToken": getCsrfToken()
+                },
+                body: body
+            })
+            .then(function (res) { return res.json(); })
+            .then(function (data) {
+                addMessage((data && data.response) ? data.response : "Error: Unable to fetch response", "bot");
+            })
+            .catch(function () {
+                addMessage("Error: Unable to fetch response", "bot");
+            })
+            .finally(function () {
+                sendBtn.disabled = false;
+                input.focus();
+            });
+        }
+
+        function showTooltipOnTap() {
+            toggleBtn.classList.add("cnh-tooltip-visible");
+            window.clearTimeout(tooltipTimer);
+            tooltipTimer = window.setTimeout(function () {
+                toggleBtn.classList.remove("cnh-tooltip-visible");
+            }, 1200);
+        }
+
+        if (toggleBtn && popup && closeBtn && input && sendBtn && messages) {
+            toggleBtn.addEventListener("click", function () {
+                showTooltipOnTap();
+                popup.classList.toggle("cnh-open");
+                var isOpen = popup.classList.contains("cnh-open");
+                toggleBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+                if (isOpen) input.focus();
+            });
+
+            closeBtn.addEventListener("click", function () {
+                popup.classList.remove("cnh-open");
+                toggleBtn.setAttribute("aria-expanded", "false");
+            });
+
+            sendBtn.addEventListener("click", sendMessage);
+
+            input.addEventListener("keydown", function (e) {
+                if (e.key === "Enter") {
+                    e.preventDefault();
+                    sendMessage();
+                }
+            });
+        }
+    })();
+</script>
+
+</body>
+</html>

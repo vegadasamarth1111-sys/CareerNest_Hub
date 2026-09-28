@@ -1,0 +1,60 @@
+<footer class="cnh-footer bg-primary text-white mt-5">
+    <div class="container cnh-footer-shell">
+        <div class="row g-4 g-lg-5 cnh-footer-grid">
+            <div class="col-12 col-md-6 col-lg-4">
+                <h5 class="cnh-footer-brand mb-2">CareerNest Hub</h5>
+                <p class="cnh-footer-desc mb-3">Helping students and professionals discover jobs, internships, and opportunities.</p>
+                <div class="cnh-footer-tags" aria-label="CareerNest categories">
+                    <span class="cnh-footer-tag">Jobs</span>
+                    <span class="cnh-footer-tag">Internships</span>
+                    <span class="cnh-footer-tag">Courses</span>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <h6 class="cnh-footer-title">Quick Links</h6>
+                <ul class="cnh-footer-links">
+                    {% if user.is_authenticated %}
+
+                        {% if user.is_superuser %}
+                            <li><a href="{% url 'custom_admin:admin_dashboard' %}">Admin Dashboard</a></li>
+                            <li><a href="/jobs/">Jobs</a></li>
+                            <li><a href="/internships/">Internships</a></li>
+                            <li><a href="/courses/">Courses</a></li>
+                            <li><a href="/mycourses/">My Courses</a></li>
+                            <li><a href="{% url 'custom_admin:manage_courses' %}">Manage Courses</a></li>
+
+                        {% elif user.profile.role|default:'' == 'recruiter' %}
+                            <li><a href="/dashboard/">Dashboard</a></li>
+                            <li><a href="/jobs/recruiter/applications/">Job Applications</a></li>
+                            <li><a href="/internships/recruiter/applications/">Internship Applications</a></li>
+
+                        {% else %}
+                            <li><a href="/dashboard/">Dashboard</a></li>
+                            <li><a href="/jobs/">Jobs</a></li>
+                            <li><a href="/internships/">Internships</a></li>
+                            <li><a href="/courses/">Courses</a></li>
+                            <li><a href="/mycourses/">My Courses</a></li>
+                            <li><a href="{% url 'my_applications' %}">My Applications</a></li>
+                        {% endif %}
+
+                    {% endif %}
+                </ul>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <h6 class="cnh-footer-title">Support</h6>
+                <p class="cnh-footer-meta mb-2">Working Hours: Mon-Sat (9:00 AM - 7:00 PM)</p>
+                <p class="cnh-footer-meta mb-2">Email: support@careernesthub.com</p>
+                <p class="cnh-footer-meta mb-3">Location: Ahmedabad, Gujarat, India</p>
+                <p class="mb-0">
+                    <a href="{% url 'contact' %}" class="text-white text-decoration-underline cnh-footer-contact-link">Contact Us</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="cnh-footer-bottom text-center">
+            <p class="mb-0">© 2026 CareerNest Hub</p>
+        </div>
+    </div>
+</footer>

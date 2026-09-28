@@ -1,0 +1,194 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Verify OTP</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            font-family: 'Poppins', sans-serif;
+
+            background: radial-gradient(circle at 20% 30%, #2563eb 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, #1e40af 0%, transparent 40%),
+                        linear-gradient(135deg, #0f172a, #1e3a8a);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card-box {
+            width: 420px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(18px);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.15);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+            color: white;
+            text-align: center;
+        }
+
+        h3 {
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .form-control {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            border-radius: 10px;
+            padding: 12px;
+        }
+
+        .form-control::placeholder {
+            color: #ccc;
+        }
+
+        .form-control:focus {
+            background: rgba(255,255,255,0.25);
+            border-color: #60a5fa;
+            box-shadow: 0 0 10px rgba(96,165,250,0.5);
+            color: white;
+        }
+
+        .btn-main {
+            background: linear-gradient(45deg, #2563eb, #3b82f6);
+            border: none;
+            width: 100%;
+            padding: 12px;
+            font-weight: 600;
+            border-radius: 10px;
+        }
+
+        .btn-main:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(59,130,246,0.4);
+        }
+
+        .eye-btn {
+            position: absolute;
+            right: 12px;
+            top: 12px;
+            cursor: pointer;
+            color: #ccc;
+        }
+
+        .password-box {
+            position: relative;
+        }
+
+        .timer {
+            font-size: 14px;
+            color: #93c5fd;
+            margin-bottom: 10px;
+        }
+
+        .resend {
+            margin-top: 10px;
+        }
+
+        .resend a {
+            color: #93c5fd;
+            text-decoration: none;
+        }
+
+        .resend a:hover {
+            text-decoration: underline;
+        }
+
+        .alert {
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card-box">
+
+    <h3>Reset Password</h3>
+
+    <!-- Django Messages -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-warning">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <!-- ⏱ TIMER -->
+    <div class="timer">
+        OTP expires in <span id="countdown">05:00</span>
+    </div>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <input type="text" name="otp" class="form-control mb-3" placeholder="Enter OTP" required>
+
+        <!-- Password -->
+        <div class="password-box mb-3">
+            <input type="password" id="password" name="password" class="form-control" placeholder="New Password" required>
+            <span class="eye-btn" onclick="togglePassword('password')">👁</span>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="password-box mb-3">
+            <input type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="Confirm Password" required>
+            <span class="eye-btn" onclick="togglePassword('confirm_password')">👁</span>
+        </div>
+
+        <button type="submit" class="btn btn-main">
+            Reset Password
+        </button>
+    </form>
+
+    <!-- 🔁 RESEND OTP -->
+    <div class="resend">
+        <a href="{% url 'resend_otp' %}">Resend OTP</a>
+    </div>
+
+</div>
+
+<!-- ================= JS ================= -->
+
+<script>
+    // 👁 Show/Hide password
+    function togglePassword(id) {
+        let input = document.getElementById(id);
+        input.type = input.type === "password" ? "text" : "password";
+    }
+
+    // ⏱ Countdown Timer (5 min)
+    let timeLeft = 300;
+
+    const countdown = document.getElementById("countdown");
+
+    const timer = setInterval(() => {
+        let minutes = Math.floor(timeLeft / 60);
+        let seconds = timeLeft % 60;
+
+        countdown.innerHTML =
+            `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            countdown.innerHTML = "Expired";
+        }
+
+        timeLeft--;
+    }, 1000);
+</script>
+
+</body>
+</html>

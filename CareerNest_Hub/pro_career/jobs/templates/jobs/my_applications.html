@@ -1,0 +1,206 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}
+My Applications
+{% endblock %}
+
+{% block content %}
+
+<h1>My Applications</h1>
+
+
+<!-- ========================= -->
+<!-- JOB APPLICATIONS -->
+<!-- ========================= -->
+
+<h2>My Job Applications</h2>
+
+{% if applications %}
+
+    {% for app in applications %}
+
+    <div style="border:1px solid black; padding:15px; margin:15px;">
+
+        <h3>{{ app.job.title }}</h3>
+
+        <p><b>Company:</b> {{ app.job.company }}</p>
+
+        <p><b>Location:</b> {{ app.job.location }}</p>
+
+        <p><b>Applied On:</b> {{ app.applied_date|default:app.applied_at }}</p>
+
+
+        <!-- STATUS -->
+
+        <p>
+            <b>Status:</b>
+
+            {% if app.status == "Applied" %}
+                <span style="color:blue;">{{ app.status }}</span>
+
+            {% elif app.status == "Under Review" %}
+                <span style="color:orange;">{{ app.status }}</span>
+
+            {% elif app.status == "Shortlisted" %}
+                <span style="color:green;">{{ app.status }}</span>
+
+            {% elif app.status == "Rejected" %}
+                <span style="color:red;">{{ app.status }}</span>
+
+            {% elif app.status == "Selected" %}
+                <span style="color:darkgreen; font-weight:bold;">
+                    {{ app.status }}
+                </span>
+
+            {% else %}
+                {{ app.status }}
+            {% endif %}
+        </p>
+
+
+        <!-- RESUME -->
+
+        {% if app.resume %}
+        <p>
+            <b>Resume:</b>
+
+            <a href="{{ app.resume.url }}" target="_blank">
+                View Uploaded Resume
+            </a>
+
+        </p>
+        {% endif %}
+
+
+        <!-- REVOKE -->
+
+        {% if app.status == "Applied" or app.status == "Under Review" %}
+
+            <a href="{% url 'withdraw_application' app.id %}"
+               style="background:red; color:white; padding:8px 12px; text-decoration:none; border-radius:4px;">
+               Revoke Application
+            </a>
+
+        {% elif app.status == "Selected" %}
+
+            <p style="color:green; font-weight:bold;">
+                🎉 You have been selected. Application cannot be revoked.
+            </p>
+
+        {% elif app.status == "Rejected" %}
+
+            <p style="color:gray;">
+                This application has been closed.
+            </p>
+
+        {% endif %}
+
+    </div>
+
+    {% endfor %}
+
+{% else %}
+
+<p>No job applications.</p>
+
+{% endif %}
+
+
+
+<hr>
+
+
+
+<!-- ========================= -->
+<!-- INTERNSHIP APPLICATIONS -->
+<!-- ========================= -->
+
+<h2>My Internship Applications</h2>
+
+
+{% if internship_apps %}
+
+    {% for app in internship_apps %}
+
+    <div style="border:1px solid black; padding:15px; margin:15px;">
+
+        <h3>{{ app.internship.title }}</h3>
+
+        <p><b>Company:</b> {{ app.internship.company }}</p>
+
+        <p><b>Location:</b> {{ app.internship.location }}</p>
+
+        <p><b>Applied On:</b> {{ app.applied_date|default:app.applied_at }}</p>
+
+
+        <!-- STATUS -->
+
+        <p>
+            <b>Status:</b>
+
+            {% if app.status == "Applied" %}
+                <span style="color:blue;">{{ app.status }}</span>
+
+            {% elif app.status == "Shortlisted" %}
+                <span style="color:orange;">{{ app.status }}</span>
+
+            {% elif app.status == "Selected" %}
+                <span style="color:green; font-weight:bold;">
+                    {{ app.status }}
+                </span>
+
+            {% elif app.status == "Rejected" %}
+                <span style="color:red;">
+                    {{ app.status }}
+                </span>
+
+            {% endif %}
+        </p>
+
+
+        <!-- RESUME -->
+
+        {% if app.resume %}
+
+        <p>
+            <b>Resume:</b>
+
+            <a href="{{ app.resume.url }}" target="_blank">
+                View Resume
+            </a>
+
+        </p>
+
+        {% endif %}
+
+
+        <!-- REVOKE -->
+
+        {% if app.status == "Applied" %}
+
+            <a href="{% url 'internships:revoke_internship' app.id %}"
+               style="background:red; color:white; padding:8px 12px; text-decoration:none; border-radius:4px;">
+               Revoke Application
+            </a>
+
+        {% elif app.status == "Selected" %}
+
+            <p style="color:green; font-weight:bold;">
+                🎉 Selected. Cannot revoke.
+            </p>
+
+        {% endif %}
+
+    </div>
+
+    {% endfor %}
+
+{% else %}
+
+<p>No internship applications.</p>
+
+{% endif %}
+
+
+
+{% endblock %}

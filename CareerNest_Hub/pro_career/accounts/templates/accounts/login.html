@@ -1,0 +1,178 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - CareerNest</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+
+            background: radial-gradient(circle at 20% 30%, #2563eb 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, #1e40af 0%, transparent 40%),
+                        linear-gradient(135deg, #0f172a, #1e3a8a);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-card {
+            width: 400px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(18px);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.15);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+            color: white;
+            text-align: center;
+        }
+
+        .logo {
+            width: 65px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .form-control {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            border-radius: 10px;
+            padding: 12px;
+        }
+
+        .form-control:focus {
+            background: rgba(255,255,255,0.25);
+            border-color: #60a5fa;
+            box-shadow: 0 0 10px rgba(96,165,250,0.5);
+            color: white;
+        }
+
+        .btn-login {
+            background: linear-gradient(45deg, #2563eb, #3b82f6);
+            border: none;
+            width: 100%;
+            padding: 12px;
+            font-weight: 600;
+            border-radius: 10px;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(59,130,246,0.4);
+        }
+
+        .extra-links a {
+            color: #93c5fd;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .extra-links a:hover {
+            text-decoration: underline;
+        }
+
+        .password-box {
+            position: relative;
+        }
+
+        .eye-btn {
+            position: absolute;
+            right: 12px;
+            top: 12px;
+            cursor: pointer;
+            color: #ccc;
+        }
+
+        .error {
+            color: #ff6b6b;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .footer-text {
+            font-size: 12px;
+            margin-top: 18px;
+            color: #aaa;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="login-card">
+
+    <img src="{% static 'img/careernest-logo.svg' %}" class="logo">
+
+    <h2>Welcome Back</h2>
+
+    {% if error %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <input type="text" name="username" class="form-control mb-3"
+               placeholder="Username" required>
+
+        <!-- PASSWORD WITH EYE -->
+        <div class="password-box mb-3">
+            <input type="password" id="password" name="password"
+                   class="form-control" placeholder="Password" required>
+            <span class="eye-btn" onclick="togglePassword()">👁</span>
+        </div>
+
+        <div class="form-check text-start mb-3">
+            <input class="form-check-input" type="checkbox">
+            <label class="form-check-label">Remember me</label>
+        </div>
+
+        <button type="submit" class="btn btn-login">
+            Login
+        </button>
+
+        <!-- ✅ FORGOT PASSWORD -->
+        <div class="text-end mt-2">
+            <a href="{% url 'forgot_password' %}">
+                Forgot Password?
+            </a>
+        </div>
+
+    </form>
+
+    <div class="extra-links mt-3">
+        <a href="{% url 'register' %}">Create account</a>
+    </div>
+
+    <div class="footer-text">
+        CareerNest Hub © 2026
+    </div>
+
+</div>
+
+<script>
+function togglePassword() {
+    let input = document.getElementById("password");
+    input.type = input.type === "password" ? "text" : "password";
+}
+</script>
+
+</body>
+</html>

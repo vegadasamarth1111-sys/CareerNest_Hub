@@ -1,0 +1,357 @@
+﻿{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+<div class="home-shell">
+
+    <!-- HERO -->
+    <section class="home-hero">
+
+        <div class="hero-grid">
+
+            <div class="hero-content">
+
+                <span class="hero-chip">
+                    Career Platform
+                </span>
+
+                <h1>
+                    Launch Your Career With Confidence
+                </h1>
+
+                <p>
+                    Discover jobs, internships, and courses
+                    with a dashboard designed for real progress.
+                </p>
+
+
+                <div class="hero-actions">
+
+                    {% if user.is_authenticated %}
+
+                        {% if user.is_superuser %}
+                            <a class="hero-btn hero-btn-primary"
+                               href="/admin/">
+
+                                Admin Panel
+
+                            </a>
+                        {% elif user.profile.role|default:'' == 'recruiter' %}
+                            <p class="mb-0">
+                                Review your recruiting insights below.
+                            </p>
+                        {% else %}
+                            <a class="hero-btn hero-btn-primary"
+                               href="/jobs/">
+
+                                Browse Jobs
+
+                            </a>
+
+                            <a class="hero-btn hero-btn-secondary"
+                               href="{% url 'my_applications' %}">
+
+                                My Applications
+
+                            </a>
+                        {% endif %}
+
+                    {% else %}
+
+                        <a class="hero-btn hero-btn-primary"
+                           href="{% url 'register' %}">
+
+                            Create Account
+
+                        </a>
+
+                        <a class="hero-btn hero-btn-secondary"
+                           href="{% url 'login' %}">
+
+                            Sign In
+
+                        </a>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+
+            <!-- STATS -->
+            <div class="hero-stats">
+
+                <div class="stat-card">
+                    <span class="stat-value">Jobs</span>
+                    <span class="stat-label">
+                        Explore role listings
+                    </span>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-value">Internships</span>
+                    <span class="stat-label">
+                        Build experience early
+                    </span>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-value">Courses</span>
+                    <span class="stat-label">
+                        Upskill with guidance
+                    </span>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-value">Tracking</span>
+                    <span class="stat-label">
+                        Know every status update
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- LOWER GRID -->
+    <section class="home-grid">
+
+        <!-- LEFT CARD -->
+        <article class="glass-card">
+
+            <p class="eyebrow">
+                Welcome
+            </p>
+
+            <h2 class="home-welcome">
+                Welcome to CareerNest Hub
+            </h2>
+
+
+            {% if user.is_authenticated %}
+
+                <p class="muted">
+                    Hello, {{ user.username }}.
+                    Choose your next step.
+                </p>
+
+
+                <div class="quick-actions">
+
+                    {% if user.is_superuser %}
+                        <a class="action-pill"
+                           href="/admin/">
+
+                            Admin Panel
+
+                        </a>
+                    {% elif user.profile.role|default:'' == 'recruiter' %}
+                        <div class="row g-2 mt-2">
+                            <div class="col-md-6">
+                                <div class="p-2 bg-white rounded text-center shadow-sm h-100">
+                                    <h4 class="fs-3 fw-bold mb-0" style="color: #3B82F6;">{{ total_jobs }}</h4>
+                                    <small class="text-muted">Total Job Applications</small>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="p-2 bg-white rounded text-center shadow-sm h-100">
+                                    <h4 class="fs-3 fw-bold mb-0" style="color: #3B82F6;">{{ total_internships }}</h4>
+                                    <small class="text-muted">Total Internship Applications</small>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="p-2 bg-white rounded text-center shadow-sm h-100">
+                                    <h4 class="fs-3 fw-bold mb-0" style="color: #10B981;">{{ shortlisted }}</h4>
+                                    <small class="text-muted">Shortlisted Candidates</small>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="p-2 bg-white rounded text-center shadow-sm h-100">
+                                    <h4 class="fs-3 fw-bold mb-0" style="color: #F59E0B;">{{ interviews }}</h4>
+                                    <small class="text-muted">Interviews Scheduled</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-2 p-2 bg-light rounded">
+                            <small>
+                                You have <b>{{ shortlisted }}</b> shortlisted candidates and
+                                <b>{{ interviews }}</b> interviews scheduled.
+                            </small>
+                        </div>
+
+                        <div class="mt-3">
+                            <h6 class="fw-bold mb-2">Recent Activity</h6>
+                            <ul class="list-group">
+                                {% for app in recent_applications %}
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <span>{{ app.user.username }} applied for {{ app.job.title }}</span>
+                                        <span class="text-muted">{{ app.status }}</span>
+                                    </li>
+                                {% empty %}
+                                    <li class="list-group-item text-muted">No recent applications found.</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% else %}
+                        <a class="action-pill"
+                           href="/jobs/">
+
+                            Browse Jobs
+
+                        </a>
+
+                        <a class="action-pill"
+                           href="{% url 'my_applications' %}">
+
+                            My Applications
+
+                        </a>
+                    {% endif %}
+
+                </div>
+
+            {% else %}
+
+                <p class="muted">
+                    Start building your career path in one place.
+                </p>
+
+                <div class="quick-actions">
+
+                    <a class="action-pill"
+                       href="{% url 'login' %}">
+
+                        Login
+
+                    </a>
+
+                    <a class="action-pill"
+                       href="{% url 'register' %}">
+
+                        Register
+
+                    </a>
+
+                </div>
+
+            {% endif %}
+
+        </article>
+
+
+
+        <!-- RIGHT CARD -->
+        <article class="glass-card">
+
+            {% if user.is_authenticated and user.profile.role|default:'' == 'recruiter' %}
+                <p class="eyebrow">
+                    Application Overview
+                </p>
+                <h3 class="mb-3">
+                    Application Overview
+                </h3>
+                <div class="mx-auto" style="max-width: 280px; height: 260px;">
+                    <canvas id="applicationChart"></canvas>
+                </div>
+                <div class="mt-3">
+                    <h6 class="fw-bold mb-2">Application Breakdown</h6>
+                    <div class="d-flex justify-content-between align-items-center bg-light rounded py-2 px-3 mb-2">
+                        <small class="text-muted">Applied</small>
+                        <small class="fw-semibold" style="color: #3B82F6;">{{ applied }}</small>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center bg-light rounded py-2 px-3 mb-2">
+                        <small class="text-muted">Shortlisted</small>
+                        <small class="fw-semibold" style="color: #10B981;">{{ shortlisted }}</small>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center bg-light rounded py-2 px-3">
+                        <small class="text-muted">Interviews</small>
+                        <small class="fw-semibold" style="color: #F59E0B;">{{ interviews }}</small>
+                    </div>
+                </div>
+            {% else %}
+                <p class="eyebrow">
+                    Why CareerNest Hub
+                </p>
+
+                <h3>
+                    Everything You Need In One Dashboard
+                </h3>
+
+
+                <ul class="feature-list">
+
+                    <li>
+                        Simple job and internship application tracking
+                    </li>
+
+                    <li>
+                        Recruiter status updates in real time
+                    </li>
+
+                    <li>
+                        Student-friendly and clean workflow
+                    </li>
+
+                    <li>
+                        Courses and opportunities in one place
+                    </li>
+
+                </ul>
+            {% endif %}
+
+        </article>
+
+    </section>
+
+</div>
+
+{% if user.is_authenticated and user.profile.role|default:'' == 'recruiter' %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const chartElement = document.getElementById('applicationChart');
+
+    if (chartElement) {
+        new Chart(chartElement, {
+            type: 'doughnut',
+            data: {
+                labels: ['Applied', 'Shortlisted', 'Interviews'],
+                datasets: [{
+                    label: 'Applications',
+                    data: [{{ applied }}, {{ shortlisted }}, {{ interviews }}],
+                    backgroundColor: ['#3B82F6', '#10B981', '#F59E0B'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                cutout: '65%',
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            boxWidth: 10,
+                            boxHeight: 10
+                        }
+                    }
+                }
+            }
+        });
+    }
+</script>
+{% endif %}
+
+{% endblock %}

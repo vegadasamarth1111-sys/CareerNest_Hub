@@ -1,0 +1,36 @@
+{% extends "admin_panel/base.html" %}
+
+{% block title %}Reply Query{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-9">
+        <div class="card shadow-sm border-0 mb-3">
+            <div class="card-body">
+                <h3 class="h5 fw-bold mb-3">Reply to Contact Query</h3>
+                <p class="mb-1"><strong>Name:</strong> {{ query.name }}</p>
+                <p class="mb-1"><strong>Email:</strong> {{ query.email }}</p>
+                <p class="mb-1"><strong>Subject:</strong> {{ query.subject }}</p>
+                <p class="mb-0"><strong>Message:</strong> {{ query.message }}</p>
+            </div>
+        </div>
+
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="reply" class="form-label fw-semibold">Admin Reply</label>
+                        <textarea name="reply" id="reply" rows="6" class="form-control" required>{{ query.admin_reply|default:"" }}</textarea>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-success">Send Reply</button>
+                        <a href="{% url 'custom_admin:admin_contact_queries' %}" class="btn btn-outline-secondary">Back</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

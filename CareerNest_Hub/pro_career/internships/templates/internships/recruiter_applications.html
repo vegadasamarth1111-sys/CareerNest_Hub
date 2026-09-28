@@ -1,0 +1,88 @@
+{% extends "dashboard/base.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <h2 class="mb-4">Internship Applications</h2>
+
+    <!-- 🔍 SEARCH + FILTER -->
+    <form method="GET" class="row g-2 mb-3">
+        <div class="col-md-4">
+            <input type="text" name="search" class="form-control"
+                   placeholder="Search candidate..."
+                   value="{{ search_query }}">
+        </div>
+
+        <div class="col-md-3">
+            <select name="status" class="form-select">
+                <option>All</option>
+                <option {% if selected_status == "Applied" %}selected{% endif %}>Applied</option>
+                <option {% if selected_status == "Shortlisted" %}selected{% endif %}>Shortlisted</option>
+                <option {% if selected_status == "Selected" %}selected{% endif %}>Selected</option>
+                <option {% if selected_status == "Rejected" %}selected{% endif %}>Rejected</option>
+            </select>
+        </div>
+
+        <div class="col-md-2">
+            <button class="btn btn-primary w-100">Filter</button>
+        </div>
+    </form>
+
+
+    <!-- 📋 TABLE -->
+    <table class="table table-bordered shadow">
+
+        <thead class="table-dark">
+            <tr>
+                <th>Candidate</th>
+                <th>Internship</th>
+                <th>Applied on</th>
+                <th>Status</th>
+                <th>Update Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for app in applications %}
+            <tr>
+                <td>{{ app.applicant.username }}</td>
+                <td>{{ app.internship.title }}</td>
+                <td>{{ app.applied_date|default:app.applied_at|date:"M d, Y h:i A" }}</td>
+                <td><b>{{ app.status }}</b></td>
+
+                <td>
+                    <form method="POST" class="d-flex">
+                        {% csrf_token %}
+
+                        <input type="hidden" name="app_id" value="{{ app.id }}">
+
+                        <select name="status" class="form-select me-2">
+                            <option>Applied</option>
+                            <option>Shortlisted</option>
+                            <option>Selected</option>
+                            <option>Rejected</option>
+                        </select>
+
+                        <button class="btn btn-success btn-sm">
+                            Update
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="text-center">
+                    No applications found
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}

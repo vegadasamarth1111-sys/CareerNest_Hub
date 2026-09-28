@@ -1,0 +1,176 @@
+﻿{% extends 'dashboard/base.html' %}
+
+{% block title %}
+Recruiter Panel
+{% endblock %}
+
+{% block content %}
+
+<h1>Recruiter Dashboard</h1>
+
+<form method="GET" style="margin-bottom:15px;">
+    <label><strong>Search Candidate:</strong></label>
+    <input type="text" name="search" value="{{ search_query }}" placeholder="Enter name">
+
+    <label><strong>Filter by Status:</strong></label>
+    <select name="status">
+        <option value="All" {% if selected_status == "All" %}selected{% endif %}>All</option>
+        <option value="Applied" {% if selected_status == "Applied" %}selected{% endif %}>Applied</option>
+        <option value="Under Review" {% if selected_status == "Under Review" %}selected{% endif %}>Under Review</option>
+        <option value="Shortlisted" {% if selected_status == "Shortlisted" %}selected{% endif %}>Shortlisted</option>
+        <option value="Interview Scheduled" {% if selected_status == "Interview Scheduled" %}selected{% endif %}>Interview Scheduled</option>
+        <option value="Offered" {% if selected_status == "Offered" %}selected{% endif %}>Offered</option>
+        <option value="Hired" {% if selected_status == "Hired" %}selected{% endif %}>Hired</option>
+        <option value="Rejected" {% if selected_status == "Rejected" %}selected{% endif %}>Rejected</option>
+    </select>
+
+    <label><strong>Filter by Job:</strong></label>
+    <select name="job">
+        <option value="All">All</option>
+        {% for job in job_options %}
+            <option value="{{ job.id }}" {% if selected_job_id == job.id %}selected{% endif %}>
+                {{ job.title }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <button type="submit">Apply</button>
+</form>
+
+<table border="1" cellpadding="10">
+
+    <tr>
+        <th>Candidate</th>
+        <th>Job</th>
+        <th>Applied on</th>
+        <th>Status</th>
+        <th>Change Status</th>
+    </tr>
+
+
+    {% for app in applications %}
+
+    <tr>
+
+        <td>{{ app.user.username }}</td>
+
+        <td>{{ app.job.title }}</td>
+
+        <td>{{ app.applied_date|default:app.applied_at|date:"M d, Y h:i A" }}</td>
+
+
+        <!-- STATUS COLOR -->
+
+        <td>
+
+            {% if app.status == "Applied" %}
+                <span style="color: goldenrod; font-weight: bold;">
+                    {{ app.status }}
+                </span>
+
+            {% elif app.status == "Under Review" %}
+                <span style="color: dodgerblue; font-weight: bold;">
+                    {{ app.status }}
+                </span>
+
+            {% elif app.status == "Shortlisted" %}
+                <span style="color: purple; font-weight: bold;">
+                    {{ app.status }}
+                </span>
+
+            {% elif app.status == "Interview Scheduled" %}
+                <span style="color: teal; font-weight: bold;">
+                    {{ app.status }}
+                </span>
+
+            {% elif app.status == "Offered" %}
+                <span style="color: green; font-weight: bold;">
+                    {{ app.status }}
+                </span>
+
+            {% elif app.status == "Hired" %}
+                <span style="color: darkgreen; font-weight: bold;">
+                    {{ app.status }}
+                </span>
+
+            {% elif app.status == "Rejected" %}
+                <span style="color: red; font-weight: bold;">
+                    {{ app.status }}
+                </span>
+
+            {% else %}
+                {{ app.status }}
+            {% endif %}
+
+        </td>
+
+
+        <!-- CHANGE STATUS -->
+
+        <td>
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <input type="hidden" name="app_id" value="{{ app.id }}">
+
+
+                <select name="status">
+
+                    <option value="Applied"
+                        {% if app.status == "Applied" %}selected{% endif %}>
+                        Applied
+                    </option>
+
+                    <option value="Under Review"
+                        {% if app.status == "Under Review" %}selected{% endif %}>
+                        Under Review
+                    </option>
+
+                    <option value="Shortlisted"
+                        {% if app.status == "Shortlisted" %}selected{% endif %}>
+                        Shortlisted
+                    </option>
+
+                    <option value="Interview Scheduled"
+                        {% if app.status == "Interview Scheduled" %}selected{% endif %}>
+                        Interview Scheduled
+                    </option>
+
+                    <option value="Offered"
+                        {% if app.status == "Offered" %}selected{% endif %}>
+                        Offered
+                    </option>
+
+                    <option value="Hired"
+                        {% if app.status == "Hired" %}selected{% endif %}>
+                        Hired
+                    </option>
+
+                    <option value="Rejected"
+                        {% if app.status == "Rejected" %}selected{% endif %}>
+                        Rejected
+                    </option>
+
+                </select>
+
+                <button type="submit">
+                    Update
+                </button>
+
+            </form>
+
+        </td>
+
+    </tr>
+
+    {% empty %}
+    <tr>
+        <td colspan="5">No applications found for selected filters.</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}

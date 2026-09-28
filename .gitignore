@@ -1,0 +1,42 @@
+# Virtual environments
+venv/
+venv*/
+.venv/
+*/venv/
+*/venv*/
+*/.venv/
+*/*/venv/
+*/*/venv*/
+*/*/.venv/
+
+# Environment variables & secrets
+.env
+*.env
+.env.*
+
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Django database & temp files
+*.sqlite3
+*.sqlite3-journal
+*.backup*
+_tmp_*
+
+# Media uploads (optional/user-uploaded content)
+media/
+*/media/
+
+# Editor & IDE settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+Thumbs.db
+Desktop.ini
+.DS_Store

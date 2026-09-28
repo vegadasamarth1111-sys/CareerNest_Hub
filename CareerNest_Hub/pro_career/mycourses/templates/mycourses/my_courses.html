@@ -1,0 +1,86 @@
+{% extends "dashboard/base.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <h2 class="mb-4 fw-bold">My Courses</h2>
+
+    <div class="row g-4">
+
+        {% for c in courses %}
+
+        <div class="col-md-6">
+
+            <div class="card shadow border-0 h-100"
+                 style="border-radius:15px; overflow:hidden; transition:0.3s;">
+
+                {% if c.course.image %}
+                <img src="{{ c.course.image.url }}"
+                     style="height:220px; object-fit:cover;">
+                {% else %}
+                <img src="https://via.placeholder.com/600x300" alt="Course image placeholder">
+                {% endif %}
+
+                <div class="card-body d-flex flex-column">
+
+                    <h4 class="fw-bold">{{ c.course.title }}</h4>
+
+                    <p class="text-muted">
+                        {{ c.course.short_description|default:c.course.description|truncatewords:18 }}
+                    </p>
+
+                    <p><b>Instructor:</b> {{ c.course.instructor }}</p>
+
+                    <div class="mt-2">
+                        <small class="fw-bold">Progress: {{ c.progress }}%</small>
+
+                        <div class="progress mt-1" style="height:8px;">
+                            <div class="progress-bar bg-success"
+                                 style="width: {{ c.progress }}%;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-2">
+                        {% if c.completed %}
+                            <span class="badge bg-success">Completed</span>
+                        {% else %}
+                            <span class="badge bg-warning text-dark">In Progress</span>
+                        {% endif %}
+                    </div>
+
+                    <div class="mt-auto"></div>
+
+                    <div class="mt-3">
+                        {% if c.course.lectures.first %}
+                            <a href="{% url 'course_detail' c.course.id %}"
+                               class="btn btn-primary w-100">
+                                Watch Course
+                            </a>
+                        {% else %}
+                            <button class="btn btn-secondary w-100" disabled>
+                                No Lectures Available
+                            </button>
+                        {% endif %}
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <div class="col-12 text-center mt-5">
+            <h5>No courses enrolled yet</h5>
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

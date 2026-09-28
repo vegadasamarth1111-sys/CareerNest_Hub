@@ -1,0 +1,177 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}
+Schedule Interview
+{% endblock %}
+
+{% block content %}
+<div class="row g-4">
+    <div class="col-12 col-lg-7">
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <div>
+                        <h4 class="mb-1">Interview Scheduling</h4>
+                        <p class="text-muted mb-0">
+                            Candidate: <strong>{{ application.user.username }}</strong> |
+                            Role: <strong>{{ application.job.title }}</strong>
+                        </p>
+                    </div>
+                    <a href="{% url 'recruiter_applications' %}" class="btn btn-outline-secondary btn-sm">
+                        Back
+                    </a>
+                </div>
+
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags|default:'info' }} py-2 mb-3" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                <form method="POST" class="row g-3">
+                    {% csrf_token %}
+
+                    <div class="col-md-6">
+                        <label for="date" class="form-label">Interview Date</label>
+                        <input
+                            type="date"
+                            id="date"
+                            name="date"
+                            class="form-control"
+                            required
+                            value="{{ application.interview_date|date:'Y-m-d' }}"
+                        >
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="time" class="form-label">Interview Time</label>
+                        <input
+                            type="time"
+                            id="time"
+                            name="time"
+                            class="form-control"
+                            required
+                            value="{{ application.interview_time|time:'H:i' }}"
+                        >
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="mode" class="form-label">Interview Mode</label>
+                        <select id="mode" name="mode" class="form-select" required>
+                            <option value="">Select mode</option>
+                            <option value="Online" {% if application.interview_mode == "Online" %}selected{% endif %}>Online</option>
+                            <option value="Offline" {% if application.interview_mode == "Offline" %}selected{% endif %}>Offline</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6" id="linkField">
+                        <label for="link" class="form-label">Meeting Link</label>
+                        <input
+                            type="url"
+                            id="link"
+                            name="link"
+                            class="form-control"
+                            placeholder="https://meet.google.com/..."
+                            value="{{ application.meeting_link|default:'' }}"
+                        >
+                    </div>
+
+                    <div class="col-md-6" id="locationField">
+                        <label for="location" class="form-label">Interview Location</label>
+                        <textarea
+                            id="location"
+                            name="location"
+                            class="form-control"
+                            rows="2"
+                            placeholder="Office address / venue details"
+                        >{{ application.interview_location|default:'' }}</textarea>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="instructions" class="form-label">Instructions</label>
+                        <textarea
+                            id="instructions"
+                            name="instructions"
+                            class="form-control"
+                            rows="4"
+                            placeholder="Share interview instructions for the candidate..."
+                        >{{ application.instructions|default:'' }}</textarea>
+                    </div>
+
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">
+                            Save & Send Email
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-lg-5">
+        <div class="card shadow-sm border-0 h-100">
+            <div class="card-body">
+                <h5 class="mb-3">Scheduled Candidates</h5>
+
+                {% if applications %}
+                    <div class="list-group list-group-flush">
+                        {% for app in applications %}
+                            <div class="list-group-item px-0">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <div class="fw-semibold">{{ app.user.username }}</div>
+                                        <small class="text-muted">{{ app.job.title }}</small>
+                                    </div>
+                                    <span class="badge text-bg-light border">{{ app.status }}</span>
+                                </div>
+                                <small class="text-muted d-block mt-1">
+                                    {{ app.interview_date|default:"TBD" }} at {{ app.interview_time|default:"TBD" }}
+                                </small>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p class="text-muted mb-0">No interviews scheduled yet.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    (function () {
+        var modeEl = document.getElementById("mode");
+        var linkField = document.getElementById("linkField");
+        var locationField = document.getElementById("locationField");
+        var linkInput = document.getElementById("link");
+        var locationInput = document.getElementById("location");
+
+        if (!modeEl || !linkField || !locationField || !linkInput || !locationInput) return;
+
+        function toggleInterviewFields() {
+            var mode = (modeEl.value || "").toLowerCase();
+
+            if (mode === "online") {
+                linkField.classList.remove("d-none");
+                locationField.classList.add("d-none");
+                linkInput.required = true;
+                locationInput.required = false;
+            } else if (mode === "offline") {
+                linkField.classList.add("d-none");
+                locationField.classList.remove("d-none");
+                linkInput.required = false;
+                locationInput.required = true;
+            } else {
+                linkField.classList.add("d-none");
+                locationField.classList.add("d-none");
+                linkInput.required = false;
+                locationInput.required = false;
+            }
+        }
+
+        modeEl.addEventListener("change", toggleInterviewFields);
+        toggleInterviewFields();
+    })();
+</script>
+{% endblock %}

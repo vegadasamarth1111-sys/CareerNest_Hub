@@ -1,0 +1,220 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block title %}
+Jobs
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'jobs/jobs.css' %}">
+
+<div class="container mt-4 jobs-page-shell">
+    <div class="content-shell">
+        <div class="jobs-header-card mb-4">
+            <h2 class="jobs-title mb-1">Available Jobs</h2>
+            <p class="jobs-subtitle mb-0">
+                Discover curated opportunities from top companies and apply in one click.
+            </p>
+        </div>
+
+        {% with user_job_apps=request.user.jobapplication_set.all %}
+        <div class="jobs-grid">
+            {% for job in jobs %}
+            <article class="job-card">
+                <div class="job-card-tags">
+                    {% with loc=job.location|default:''|lower %}
+                        {% if "remote" in loc %}
+                            <span class="job-tag job-tag-remote">Remote</span>
+                        {% else %}
+                            <span class="job-tag job-tag-onsite">On-site</span>
+                        {% endif %}
+                    {% endwith %}
+                    <span class="job-tag job-tag-type">Full-time</span>
+                </div>
+
+                <h3 class="job-title">{{ job.title }}</h3>
+                <p class="job-company">{{ job.company }}</p>
+
+                <div class="job-meta-wrap">
+                    <p class="job-meta mb-1">
+                        <span class="job-meta-icon" aria-hidden="true">&#128205;</span>
+                        <span>{{ job.location }}</span>
+                    </p>
+                    {% if job.salary %}
+                    <p class="job-meta mb-0">
+                        <span class="job-meta-icon" aria-hidden="true">&#128176;</span>
+                        <span>INR {{ job.salary }}</span>
+                    </p>
+                    {% endif %}
+                </div>
+
+                <p class="description job-description">
+                    {{ job.description|default:"No description provided yet." }}
+                </p>
+
+                <div class="job-actions">
+                    <button
+                        class="btn btn-outline-primary view-detail-btn"
+                        type="button"
+                        data-id="{{ job.id }}"
+                        data-title="{{ job.title }}"
+                        data-company="{{ job.company }}"
+                        data-location="{{ job.location }}"
+                        data-salary="{% if job.salary %}INR {{ job.salary }}{% else %}Not specified{% endif %}"
+                        data-description="{{ job.description|default:'No description provided yet.'|escapejs }}"
+                        data-posted="{{ job.posted_date|default:job.created_at|date:'M d, Y h:i A' }}"
+                        data-deadline="{% if job.deadline %}{{ job.deadline|date:'M d, Y' }}{% else %}Not specified{% endif %}"
+                        data-apply-url="{% url 'apply_job' job.id %}"
+                        data-expired="{% if job.is_expired %}true{% else %}false{% endif %}"
+                    >
+                        View Details
+                    </button>
+
+                    {% if job.is_expired %}
+                        <button class="job-btn job-btn-primary" type="button" disabled>
+                            Expired
+                        </button>
+                    {% else %}
+                        <a class="job-btn job-btn-primary job-apply-btn"
+                           href="{% url 'apply_job' job.id %}"
+                           data-job-id="{{ job.id }}">
+                            Apply Now
+                        </a>
+
+                        <span class="job-applied-badge d-none" data-job-id="{{ job.id }}">
+                            Already Applied
+                        </span>
+                    {% endif %}
+                </div>
+            </article>
+            {% empty %}
+                <div class="jobs-empty-state">
+                    No jobs available.
+                </div>
+            {% endfor %}
+        </div>
+
+        <div id="applied-job-ids" class="d-none">
+            {% for app in user_job_apps %}
+                <span data-job-id="{{ app.job_id }}"></span>
+            {% endfor %}
+        </div>
+        {% endwith %}
+    </div>
+</div>
+
+<div class="modal fade" id="jobModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <p><strong id="modalCompany"></strong></p>
+                <p>&#128205; <span id="modalLocation"></span></p>
+                <p>&#128176; <span id="modalSalary"></span></p>
+
+                <hr>
+
+                <h6>Summary</h6>
+                <p id="modalSummary"></p>
+
+                <h6>Full Description</h6>
+                <p id="modalDescription"></p>
+
+                <hr>
+
+                <p><strong>Posted:</strong> <span id="modalPosted"></span></p>
+                <p><strong>Deadline:</strong> <span id="modalDeadline"></span></p>
+            </div>
+
+            <div class="modal-footer">
+                <a id="modalApplyNow" class="btn btn-primary" href="#">Apply Now</a>
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var appliedIds = new Set();
+        var appliedIdElements = document.querySelectorAll("#applied-job-ids [data-job-id]");
+        for (var i = 0; i < appliedIdElements.length; i++) {
+            appliedIds.add(appliedIdElements[i].getAttribute("data-job-id"));
+        }
+
+        var applyButtons = document.querySelectorAll(".job-apply-btn[data-job-id]");
+        for (var j = 0; j < applyButtons.length; j++) {
+            var btn = applyButtons[j];
+            if (appliedIds.has(btn.getAttribute("data-job-id"))) {
+                btn.classList.add("d-none");
+            }
+        }
+
+        var appliedBadges = document.querySelectorAll(".job-applied-badge[data-job-id]");
+        for (var k = 0; k < appliedBadges.length; k++) {
+            var badge = appliedBadges[k];
+            if (appliedIds.has(badge.getAttribute("data-job-id"))) {
+                badge.classList.remove("d-none");
+            }
+        }
+
+        var modalElement = document.getElementById("jobModal");
+        if (!modalElement || typeof bootstrap === "undefined") {
+            return;
+        }
+
+        var modal = new bootstrap.Modal(modalElement);
+        var applyNowLink = document.getElementById("modalApplyNow");
+        var detailButtons = document.querySelectorAll(".view-detail-btn");
+
+        for (var m = 0; m < detailButtons.length; m++) {
+            detailButtons[m].addEventListener("click", function () {
+                console.log("Button clicked");
+                var desc = this.dataset.description || "";
+                desc = desc.replace(/\\u000D\\u000A/g, "\n");
+                if (!desc) {
+                    desc = "No description provided yet.";
+                }
+                var summary = desc.length > 150 ? desc.substring(0, 150) + "..." : desc;
+                var isExpired = this.dataset.expired === "true";
+                var hasApplied = appliedIds.has(this.dataset.id);
+
+                document.getElementById("modalTitle").innerText = this.dataset.title || "";
+                document.getElementById("modalCompany").innerText = this.dataset.company || "";
+                document.getElementById("modalLocation").innerText = this.dataset.location || "Not specified";
+                document.getElementById("modalSalary").innerText = this.dataset.salary || "Not specified";
+                document.getElementById("modalSummary").innerText = summary;
+                document.getElementById("modalDescription").innerText = desc;
+                document.getElementById("modalPosted").innerText = this.dataset.posted || "Not specified";
+                document.getElementById("modalDeadline").innerText = this.dataset.deadline || "Not specified";
+
+                applyNowLink.classList.remove("btn-secondary", "btn-success", "disabled");
+                applyNowLink.classList.add("btn-primary");
+                applyNowLink.removeAttribute("aria-disabled");
+
+                if (isExpired) {
+                    applyNowLink.innerText = "Application Closed";
+                    applyNowLink.classList.remove("btn-primary");
+                    applyNowLink.classList.add("btn-secondary", "disabled");
+                    applyNowLink.href = "#";
+                    applyNowLink.setAttribute("aria-disabled", "true");
+                } else if (hasApplied) {
+                    applyNowLink.innerText = "View My Applications";
+                    applyNowLink.classList.remove("btn-primary");
+                    applyNowLink.classList.add("btn-success");
+                    applyNowLink.href = "{% url 'my_applications' %}";
+                } else {
+                    applyNowLink.innerText = "Apply Now";
+                    applyNowLink.href = this.dataset.applyUrl || "#";
+                }
+
+                modal.show();
+            });
+        }
+    });
+</script>
+{% endblock %}

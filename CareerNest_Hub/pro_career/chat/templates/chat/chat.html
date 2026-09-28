@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerNest Assistant</title>
+    <style>
+        :root {
+            --cnh-blue-primary: #2563EB;
+            --cnh-blue-dark: #1E40AF;
+            --cnh-blue-accent: #3B82F6;
+            --cnh-blue-light: #EFF6FF;
+            --cnh-bot-bg: #E0ECFF;
+            --cnh-text-dark: #1E293B;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(180deg, #f8fbff 0%, #e8f1ff 100%);
+            color: var(--cnh-text-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+
+        .chat-card {
+            width: min(860px, 100%);
+            height: min(82vh, 680px);
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.16);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, var(--cnh-blue-primary), var(--cnh-blue-dark));
+            color: #fff;
+            padding: 14px 16px;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        #chat-box {
+            flex: 1;
+            overflow-y: auto;
+            padding: 14px;
+            background: var(--cnh-blue-light);
+        }
+
+        .chat-message {
+            margin-bottom: 10px;
+            max-width: 86%;
+            padding: 10px 12px;
+            border-radius: 12px;
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+            line-height: 1.35;
+        }
+
+        .chat-message.user {
+            margin-left: auto;
+            background: var(--cnh-blue-primary);
+            color: #fff;
+        }
+
+        .chat-message.bot {
+            margin-right: auto;
+            background: var(--cnh-bot-bg);
+            color: var(--cnh-text-dark);
+        }
+
+        .chat-input-row {
+            display: flex;
+            gap: 8px;
+            padding: 10px;
+            border-top: 1px solid #bfdbfe;
+            background: #fff;
+        }
+
+        #message {
+            flex: 1;
+            border: 1px solid var(--cnh-blue-accent);
+            border-radius: 10px;
+            padding: 10px 12px;
+            font-size: 14px;
+            color: var(--cnh-text-dark);
+            outline: none;
+            transition: box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        #message:focus {
+            border-color: var(--cnh-blue-accent);
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+        }
+
+        #send-btn {
+            border: 0;
+            border-radius: 20px;
+            padding: 10px 16px;
+            font-weight: 600;
+            color: #fff;
+            background: var(--cnh-blue-primary);
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        #send-btn:hover {
+            background: var(--cnh-blue-dark);
+            transform: translateY(-1px);
+        }
+
+        #send-btn:disabled {
+            opacity: 0.75;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        @media (max-width: 576px) {
+            .chat-card {
+                height: 92vh;
+            }
+
+            .chat-header {
+                font-size: 16px;
+                padding: 12px 14px;
+            }
+
+            #send-btn {
+                padding: 10px 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="chat-card" aria-live="polite" aria-label="CareerNest Assistant Chat">
+    <div class="chat-header">CareerNest Assistant</div>
+    <div id="chat-box"></div>
+
+    <div class="chat-input-row">
+        <input type="text" id="message" placeholder="Ask about jobs, internships, courses...">
+        <button id="send-btn" type="button" onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<div id="chat-csrf-holder" style="display:none;">{% csrf_token %}</div>
+
+<script>
+function getCsrfToken() {
+    let name = "csrftoken=";
+    let decodedCookie = decodeURIComponent(document.cookie || "");
+    let parts = decodedCookie.split(";");
+
+    for (let i = 0; i < parts.length; i++) {
+        let c = parts[i].trim();
+        if (c.indexOf(name) === 0) {
+            return c.substring(name.length);
+        }
+    }
+
+    let hiddenToken = document.querySelector("#chat-csrf-holder input[name='csrfmiddlewaretoken']");
+    return hiddenToken ? hiddenToken.value : "{{ csrf_token }}";
+}
+
+function appendMessage(text, who) {
+    let box = document.getElementById("chat-box");
+    let bubble = document.createElement("div");
+    bubble.className = "chat-message " + (who === "user" ? "user" : "bot");
+    bubble.textContent = text;
+    box.appendChild(bubble);
+    box.scrollTo({ top: box.scrollHeight, behavior: "smooth" });
+}
+
+function sendMessage() {
+    let msg = document.getElementById("message").value;
+    let sendBtn = document.getElementById("send-btn");
+    let trimmedMsg = msg.trim();
+    if (!trimmedMsg) return;
+
+    appendMessage(trimmedMsg, "user");
+    document.getElementById("message").value = "";
+    sendBtn.disabled = true;
+
+    fetch("/chat/api/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-CSRFToken": getCsrfToken()
+        },
+        body: "message=" + encodeURIComponent(trimmedMsg)
+    })
+    .then(res => res.json())
+    .then(data => {
+        appendMessage((data && data.response) ? data.response : "Error: Unable to fetch response", "bot");
+    })
+    .catch(() => {
+        appendMessage("Error: Unable to fetch response", "bot");
+    })
+    .finally(() => {
+        sendBtn.disabled = false;
+        document.getElementById("message").focus();
+    });
+}
+
+document.getElementById("message").addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+        e.preventDefault();
+        sendMessage();
+    }
+});
+</script>
+
+</body>
+</html>

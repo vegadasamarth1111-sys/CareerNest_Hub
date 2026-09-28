@@ -1,0 +1,24 @@
+{% extends "admin_panel/base.html" %}
+
+{% block title %}My Profile{% endblock %}
+
+{% block content %}
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-4">
+        <h3 class="fw-bold mb-3">My Profile</h3>
+        <div class="mb-3">
+            <label class="text-muted small d-block">Username</label>
+            <div class="fs-5">{{ request.user.username }}</div>
+        </div>
+        <div class="mb-3">
+            <label class="text-muted small d-block">Email</label>
+            <div class="fs-6">{{ request.user.email|default:"No email added" }}</div>
+        </div>
+        <div class="mb-3">
+            <label class="text-muted small d-block">Role</label>
+            <div class="fs-6">{{ role_label }}</div>
+        </div>
+        <a href="{% url 'custom_admin:admin_dashboard' %}" class="btn btn-primary">Back to Dashboard</a>
+    </div>
+</div>
+{% endblock %}

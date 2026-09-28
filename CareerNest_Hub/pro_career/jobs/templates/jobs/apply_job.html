@@ -1,0 +1,48 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Apply for {{ job.title }}{% endblock %}
+
+{% block content %}
+
+<h2>Apply for {{ job.title }}</h2>
+<hr>
+
+<p><strong>Company:</strong> {{ job.company }}</p>
+<p><strong>Location:</strong> {{ job.location }}</p>
+<p><strong>Posted on:</strong> {{ job.posted_date|default:job.created_at|date:"M d, Y h:i A" }}</p>
+<p>
+    <strong>Deadline:</strong>
+    {% if job.deadline %}
+        {{ job.deadline|date:"M d, Y" }}
+    {% else %}
+        Not specified
+    {% endif %}
+    {% if job.is_expired %}
+        <span style="color: red; font-weight: bold; margin-left: 8px;">Expired</span>
+    {% endif %}
+</p>
+
+<hr>
+
+{% if job.is_expired %}
+    <p style="color: red; font-weight: bold;">This job posting has expired. Applications are closed.</p>
+    <button type="button" style="background-color: gray; color: white; padding: 8px;" disabled>
+        Submit Application
+    </button>
+{% else %}
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <label>Upload Resume:</label><br>
+        <input type="file" name="resume" required><br><br>
+
+        <button type="submit" style="background-color:green;color:white;padding:8px;">
+            Submit Application
+        </button>
+    </form>
+{% endif %}
+
+<br>
+<a href="{% url 'job_detail' job.id %}">Back to Job</a>
+
+{% endblock %}

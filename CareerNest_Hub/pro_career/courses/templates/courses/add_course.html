@@ -1,0 +1,36 @@
+{% extends "dashboard/base.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <h2 class="mb-3">Add Course</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <input type="text" name="title"
+                   class="form-control"
+                   placeholder="Course Title"
+                   required>
+        </div>
+
+        <div class="mb-3">
+            <input type="number" name="price"
+                   class="form-control"
+                   placeholder="Course Price"
+                   required>
+        </div>
+
+        <button class="btn btn-success">Save Course</button>
+
+        <a href="{% url 'course_list' %}" class="btn btn-secondary">
+            Cancel
+        </a>
+
+    </form>
+
+</div>
+
+{% endblock %}

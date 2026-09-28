@@ -1,0 +1,404 @@
+﻿:root {
+    --bg: #eef3fb;
+    --surface: #ffffff;
+    --surface-soft: #f8fbff;
+    --text: #1f2a44;
+    --muted: #5f6b85;
+    --brand-1: #0d6efd;
+    --brand-2: #39a3ff;
+    --brand-3: #00c2ff;
+    --border: #dbe5f3;
+    --shadow: 0 10px 30px rgba(12, 42, 87, 0.08);
+}
+
+
+/* ===================== */
+/* GLOBAL */
+/* ===================== */
+
+body {
+    background:
+        radial-gradient(circle at 8% -20%, #dbe9ff 0, transparent 45%),
+        radial-gradient(circle at 92% -10%, #d5f1ff 0, transparent 40%),
+        var(--bg);
+
+    font-family: 'Poppins', sans-serif;
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Fix click issues */
+a,
+button,
+.btn {
+    pointer-events: auto;
+    position: relative;
+    z-index: 2;
+}
+
+
+/* ===================== */
+/* LAYOUT */
+/* ===================== */
+
+.site-shell {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.site-main {
+    flex: 1 0 auto;
+}
+
+.content-shell {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    padding: 24px;
+    position: relative;
+    z-index: 1;
+}
+
+
+/* ===================== */
+/* NAVBAR */
+/* ===================== */
+
+.navbar {
+    box-shadow: 0 2px 12px rgba(5, 36, 83, 0.12);
+    padding: 10px 0;
+    margin-bottom: 0;
+}
+
+.navbar-brand {
+    font-weight: 700;
+}
+
+.cnh-brand-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.cnh-navbar-logo,
+.cnh-sidebar-logo {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    height: 40px;
+    width: auto;
+    max-width: 100%;
+    flex-shrink: 0;
+}
+
+.cnh-brand-text {
+    white-space: nowrap;
+}
+
+.navbar .nav-link {
+    font-weight: 500;
+    opacity: 0.95;
+}
+
+.navbar .nav-link:hover {
+    opacity: 1;
+}
+
+
+/* ===================== */
+/* CARDS */
+/* ===================== */
+
+.card {
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+.card-footer {
+    background: transparent;
+}
+
+
+/* ===================== */
+/* BUTTONS */
+/* ===================== */
+
+.btn-primary {
+    background-color: #0d6efd;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+
+/* ===================== */
+/* LINKS */
+/* ===================== */
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+/* ===================== */
+/* FOOTER */
+/* ===================== */
+
+.footer {
+    background: linear-gradient(135deg, #0b2b5f, #0d6efd);
+    color: #fff;
+    margin-top: auto;
+    padding: 30px 0 16px;
+}
+
+.footer-heading {
+    font-weight: 700;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+    margin-top: 14px;
+    padding-top: 10px;
+}
+
+/* Structured SaaS footer */
+.cnh-footer {
+    background: var(--brand-1);
+    color: #fff;
+    border-radius: 18px 18px 0 0;
+    overflow: hidden;
+}
+
+.cnh-footer-shell {
+    padding: 32px 18px 14px;
+}
+
+.cnh-footer-grid {
+    align-items: flex-start;
+}
+
+.cnh-footer-brand {
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+
+.cnh-footer-desc {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.55;
+    margin-right: 8px;
+}
+
+.cnh-footer-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.cnh-footer-tag {
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.26);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 999px;
+}
+
+.cnh-footer-title {
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 12px;
+}
+
+.cnh-footer-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cnh-footer-links a {
+    color: rgba(255, 255, 255, 0.92);
+    text-decoration: none;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.cnh-footer-links a:hover {
+    color: #fff;
+    text-decoration: none;
+    padding-left: 4px;
+}
+
+.cnh-footer-meta {
+    color: rgba(255, 255, 255, 0.84);
+    margin: 0;
+}
+
+.cnh-footer-contact-link:hover {
+    color: #fff;
+}
+
+.cnh-footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
+    margin-top: 24px;
+    padding-top: 14px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+
+/* ===================== */
+/* DASHBOARD HOME FIX */
+/* ===================== */
+
+.home-shell {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.home-hero {
+    background: linear-gradient(135deg, #0d6efd, #39a3ff);
+    color: white;
+    padding: 30px;
+    border-radius: 16px;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+.hero-chip {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.hero-actions {
+    margin-top: 15px;
+}
+
+.hero-btn {
+    padding: 8px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.hero-btn-primary {
+    background: white;
+    color: #0d6efd;
+}
+
+.hero-btn-secondary {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.home-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.glass-card {
+    background: #f8fbff;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid var(--border);
+}
+
+.quick-actions {
+    margin-top: 10px;
+}
+
+.action-pill {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: #eef5ff;
+    margin-right: 8px;
+    text-decoration: none;
+}
+
+.feature-list {
+    margin-top: 10px;
+}
+
+
+/* ===================== */
+/* RESPONSIVE */
+/* ===================== */
+
+@media (max-width: 768px) {
+
+    .content-shell {
+        padding: 16px;
+    }
+
+    .footer {
+        padding: 20px 0;
+    }
+
+    .cnh-navbar-logo,
+    .cnh-sidebar-logo {
+        height: 36px;
+    }
+
+    .cnh-brand-text {
+        font-size: 0.98rem;
+    }
+
+    .cnh-footer {
+        border-radius: 14px 14px 0 0;
+    }
+
+    .cnh-footer-shell {
+        padding: 24px 14px 12px;
+    }
+
+    .cnh-footer-title {
+        margin-top: 2px;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .home-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
